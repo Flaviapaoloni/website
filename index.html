@@ -68,12 +68,29 @@
         }*/
 /* ── NAV ── */
   header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--faint);
-    z-index: 100;
-  }
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
 
   .nav-inner {
     max-width: 860px;
