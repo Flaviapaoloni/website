@@ -120,113 +120,75 @@
   }
 
   /* ── PAPER ITEM ── */
-  .paper {
-    margin-bottom: 2.8rem;
-    padding-bottom: 2.8rem;
-    border-bottom: 1px solid var(--faint);
-  }
+        /* Papers */
+        .paper-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-  .paper:last-child { border-bottom: none; }
+        .paper-item:last-child {
+            border-bottom: none;
+        }
 
-  .paper-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-    line-height: 1.45;
-  }
+        .paper-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
 
-  .paper-title a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid var(--faint);
-    transition: border-color 0.2s;
-  }
+        .paper-authors {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            /*font-style: italic; */
+        }
 
-  .paper-title a:hover { border-bottom-color: var(--ink); }
+        .paper-authors a {
+            color: #3498db;
+            text-decoration: none;
+        }
 
-  .paper-journal {
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--mid);
-    margin-bottom: 0.4rem;
-  }
+        .paper-authors a:hover {
+            text-decoration: underline;
+        }
 
-  .paper-authors {
-    font-size: 0.9rem;
-    color: var(--mid);
-    margin-bottom: 0.8rem;
-  }
+        .paper-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
 
-  .paper-authors a { color: var(--link); text-decoration: none; }
-  .paper-authors a:hover { text-decoration: underline; }
+        .paper-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid transparent;
+        }
 
-  /* links row */
-  .paper-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    margin-bottom: 0.8rem;
-  }
+        .paper-link:hover {
+            border-bottom-color: #3498db;
+        }
 
-  .paper-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    color: var(--link);
-    text-decoration: none;
-    padding-right: 16px;
-    border-right: 1px solid var(--faint);
-    margin-right: 16px;
-    line-height: 1.8;
-  }
+        .paper-abstract {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .abstract-toggle {
+            color: #3498db;
+            /*font-weight: 600; */
+            margin-bottom: 0.5rem;
+        }
+        .paper-abstract {
+            transition: all 0.3s ease;
+        }
+        
 
-  .paper-link:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-  .paper-link:hover { color: var(--accent); }
-
-  /* abstract toggle */
-  .abstract-toggle {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s;
-    margin-bottom: 0.6rem;
-  }
-
-  .abstract-toggle:hover { color: var(--ink); }
-
-  .abstract-toggle .arrow {
-    display: inline-block;
-    transition: transform 0.2s;
-    font-style: normal;
-  }
-
-  .abstract-toggle.open .arrow { transform: rotate(90deg); }
-
-  .paper-abstract {
-    font-size: 0.95rem;
-    color: #3a3a3a;
-    line-height: 1.75;
-    text-align: justify;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, margin 0.2s;
-    margin-top: 0;
-  }
-
-  .paper-abstract.open {
-    max-height: 600px;
-    margin-top: 0.6rem;
-  }
 
   /* ── PLOT SLOT ── */
   /*
@@ -392,6 +354,35 @@
         <div class="plot-footer" id="plot-footer-1"></div>
       </div>
     </div>
+            <div class="paper-item">
+                <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
+                <div class="paper-authors">with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>. Data access funded by "A Sustainable Future" (ASF) grant.</div>
+                <div class="paper-links">
+                 <!--   <a href="#" class="paper-link">[Working Paper]</a>-->
+                 <!--   <a href="https://asf.uva.nl/grants/overview-funded-grants-since-2019/funded-grant-applications---spring-2023/spring-2023.html#Do-highearning-migrants-affect-Dutch-housing-marketsF-Paoloni--LM-Timm" target="_blank" class="paper-link">[Grant Information]</a>-->
+                </div>
+                <p class="paper-abstract"> </p>
+            </div>
+           
+            <div class="paper-item">
+                <div class="paper-title">The long-run relationship between house prices and rents in OECD countries</div>
+                <div class="paper-links">
+                    <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
+                        <!-- <a href="#" class="paper-link">[Slides]</a> -->
+              </div>
+                <div class="abstract-toggle" style="cursor:pointer;"> Show Abstract</div>
+                <p class="paper-abstract" style="display:none;">
+        I test whether house prices and rents are related in the long and short run using a new quarterly dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents correspond to the yearly net present value of house expenses, a function of prices. It follows that house prices and rents should be positively related. I find evidence of cointegration in only half of countries using Johansen tests. I observe a negative response of rents to a positive shock in house prices. Two factors might explain these results: heterogeneity in house quality reducing dwellings’ comparability, and rental sector size relieving demand pressure on rental prices.
+            </p>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Tax-Based Fiscal Consolidation and the Labor Market: Evidence from Italy</div>
+                <div class="paper-authors">with <a href="https://sites.google.com/view/lmtimm/about" target="_blank"> Gabriele Ciminelli</a> </div>
+                <div class="paper-links">
+                    <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
+                        <!-- <a href="#" class="paper-link">[Slides]</a> -->
+              </div>
 
     <!-- PAPER 2 -->
     <div class="paper">
@@ -425,11 +416,11 @@
     </div>
 
     <!-- PAPER 3 -->
-    <div class="paper">
+  <!--  <div class="paper">
       <div class="paper-title">Tax-Based Fiscal Consolidation and the Labor Market: Evidence from Italy</div>
       <div class="paper-authors">
         with <a href="https://sites.google.com/view/gabrieleciminelli" target="_blank">Gabriele Ciminelli</a>
-      </div>
+      </div>-->
 
       <!--
         PLOT INSTRUCTIONS:
