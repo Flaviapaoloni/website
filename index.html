@@ -24,7 +24,7 @@
         }
 
         /* Header/Navigation */
-        header {
+  /*      header {
             background-color: #fff;
             border-bottom: 1px solid #e0e0e0;
             position: fixed;
@@ -65,7 +65,52 @@
         nav a:hover,
         nav a.active {
             color: #2c3e50;
-        }
+        }*/
+/* ── NAV ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--faint);
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
 
         /* Main Container */
         .container {
@@ -546,7 +591,7 @@
             </div>
 
         <!-- Research Section -->
-       <!--   <section id="research">
+        <section id="research">
             <h2>Research</h2>
 
             <div class="paper-item">
@@ -555,7 +600,7 @@
                 <div class="paper-links">
                  <!--   <a href="#" class="paper-link">[Working Paper]</a>-->
                  <!--   <a href="https://asf.uva.nl/grants/overview-funded-grants-since-2019/funded-grant-applications---spring-2023/spring-2023.html#Do-highearning-migrants-affect-Dutch-housing-marketsF-Paoloni--LM-Timm" target="_blank" class="paper-link">[Grant Information]</a>-->
-             <!--   </div> 
+              </div> 
                 <p class="paper-abstract"> </p>
             </div>
            
@@ -564,7 +609,7 @@
                 <div class="paper-links">
                     <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
                         <!-- <a href="#" class="paper-link">[Slides]</a> -->
-            <!--     </div>
+               </div>
                 <div class="abstract-toggle" style="cursor:pointer;"> Show Abstract</div>
                 <p class="paper-abstract" style="display:none;">
         I test whether house prices and rents are related in the long and short run using a new quarterly dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents correspond to the yearly net present value of house expenses, a function of prices. It follows that house prices and rents should be positively related. I find evidence of cointegration in only half of countries using Johansen tests. I observe a negative response of rents to a positive shock in house prices. Two factors might explain these results: heterogeneity in house quality reducing dwellings’ comparability, and rental sector size relieving demand pressure on rental prices.
@@ -577,8 +622,8 @@
                 <div class="paper-links">
                     <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
                         <!-- <a href="#" class="paper-link">[Slides]</a> -->
-           <!--   </div> -->   
-        <!--  </section> -->
+           </div>  
+      </section> 
 
          <!-- Teaching -->
         <section id="teaching">
