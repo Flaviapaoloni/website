@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Flavia Paoloni</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+  :root {
+    --ink:    #1a1a1a;
+    --mid:    #6b6b6b;
+    --faint:  #e8e4de;
+    --bg:     #faf9f7;
+    --white:  #ffffff;
+    --accent: #8b4a2f;
+    --link:   #2b4c7e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--faint);
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 96px 2rem 80px;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .page-header .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── SECTION ── */
+  .research-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .research-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  /* ── PAPER ITEM ── */
+  .paper {
+    margin-bottom: 2.8rem;
+    padding-bottom: 2.8rem;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .paper:last-child { border-bottom: none; }
+
+  .paper-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.45;
+  }
+
+  .paper-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--faint);
+    transition: border-color 0.2s;
+  }
+
+  .paper-title a:hover { border-bottom-color: var(--ink); }
+
+  .paper-journal {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--mid);
+    margin-bottom: 0.4rem;
+  }
+
+  .paper-authors {
+    font-size: 0.9rem;
+    color: var(--mid);
+    margin-bottom: 0.8rem;
+  }
+
+  .paper-authors a { color: var(--link); text-decoration: none; }
+  .paper-authors a:hover { text-decoration: underline; }
+
+  /* links row */
+  .paper-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .paper-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--link);
+    text-decoration: none;
+    padding-right: 16px;
+    border-right: 1px solid var(--faint);
+    margin-right: 16px;
+    line-height: 1.8;
+  }
+
+  .paper-link:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .paper-link:hover { color: var(--accent); }
+
+  /* abstract toggle */
+  .abstract-toggle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    margin-bottom: 0.6rem;
+  }
+
+  .abstract-toggle:hover { color: var(--ink); }
+
+  .abstract-toggle .arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+    font-style: normal;
+  }
+
+  .abstract-toggle.open .arrow { transform: rotate(90deg); }
+
+  .paper-abstract {
+    font-size: 0.95rem;
+    color: #3a3a3a;
+    line-height: 1.75;
+    text-align: justify;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, margin 0.2s;
+    margin-top: 0;
+  }
+
+  .paper-abstract.open {
+    max-height: 600px;
+    margin-top: 0.6rem;
+  }
+
+  /* ── PLOT SLOT ── */
+  /*
+    HOW TO ADD A PLOT TO A PAPER:
+    Each paper has a <div class="paper-plot" data-csv="YOUR_URL" data-col="column_name">
+    Set  data-csv  to your raw GitHub CSV URL
+    Set  data-col  to the column you want to plot (besides "year")
+    Set  data-label to the y-axis label
+    Leave data-csv empty to hide the plot entirely.
+  */
+  .paper-plot {
+    margin-top: 1.4rem;
+    background: var(--white);
+    border: 1px solid var(--faint);
+    padding: 20px 20px 12px;
+    display: none;   /* hidden until CSV loads */
+  }
+
+  .paper-plot.visible { display: block; }
+
+  .plot-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  .plot-canvas-wrap { position: relative; width: 100%; }
+
+  .plot-canvas-wrap canvas { display: block; width: 100%; }
+
+  .plot-tooltip {
+    position: absolute;
+    background: var(--ink);
+    color: var(--white);
+    padding: 7px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    line-height: 1.6;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+    border-top: 2px solid var(--accent);
+    z-index: 10;
+  }
+
+  .plot-tooltip.visible { opacity: 1; }
+
+  .plot-footer {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mid);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    border-top: 1px solid var(--faint);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ── MOBILE ── */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  @media (max-width: 680px) {
+    .menu-toggle { display: block; }
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 56px; left: 0; right: 0;
+      background: var(--bg);
+      flex-direction: column;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--faint);
+      gap: 1rem;
+    }
+    nav ul.open { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html">Flavia Paoloni</a>
+    <button class="menu-toggle" onclick="document.getElementById('nm').classList.toggle('open')">☰</button>
+    <nav>
+      <ul id="nm">
+        <li><a href="index.html">About</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="index.html#teaching">Teaching</a></li>
+        <li><a href="Paoloni_F_CV.pdf" target="_blank">CV</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="label">Flavia Paoloni</div>
+    <h1>Research</h1>
+  </div>
+
+  <!-- ════════════════════════════════
+       WORKING PAPERS
+  ════════════════════════════════ -->
+  <div class="research-section">
+    <div class="research-section-title">Working Papers</div>
+
+    <!-- PAPER 1 -->
+    <div class="paper">
+      <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
+      <div class="paper-authors">
+        with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
+        Data access funded by the "A Sustainable Future" (ASF) grant.
+      </div>
+      <div class="paper-links">
+        <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
+      </div>
+
+      <!--
+        PLOT INSTRUCTIONS FOR THIS PAPER:
+        Replace data-csv with your raw GitHub CSV URL.
+        The CSV must have a "year" column and a data column.
+        Set data-col to the name of that data column.
+        Set data-label to the y-axis description shown in the footer.
+        Example:
+          data-csv="https://raw.githubusercontent.com/Flaviapaoloni/housing/main/immigrants_hpi.csv"
+          data-col="house_price_index"
+          data-label="House price index (2000=100)"
+      -->
+      <div class="paper-plot"
+           data-csv="https://raw.githubusercontent.com/Flaviapaoloni/housing/refs/heads/main/house_price_cbs.csv"
+           data-delimiter=";"
+           data-col="house_price_index"
+           data-label="Average purchase price (€)">
+        <div class="plot-title" id="plot-title-1"></div>
+        <div class="plot-canvas-wrap">
+          <canvas id="plot-canvas-1" height="200"></canvas>
+          <div class="plot-tooltip" id="plot-tooltip-1"></div>
+        </div>
+        <div class="plot-footer" id="plot-footer-1"></div>
+      </div>
+    </div>
+
+    <!-- PAPER 2 -->
+    <div class="paper">
+      <div class="paper-title">The long-run relationship between house prices and rents in OECD countries</div>
+
+      <button class="abstract-toggle" onclick="toggleAbstract(this)">
+        <span class="arrow">›</span> Abstract
+      </button>
+      <div class="paper-abstract">
+        I test whether house prices and rents are related in the long and short run using a new quarterly dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents correspond to the yearly net present value of house expenses, a function of prices. It follows that house prices and rents should be positively related. I find evidence of cointegration in only half of countries using Johansen tests. I observe a negative response of rents to a positive shock in house prices. Two factors might explain these results: heterogeneity in house quality reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
+      </div>
+
+      <!--
+        PLOT INSTRUCTIONS:
+        Add a CSV with columns: year, variable_of_interest
+        Update data-csv, data-col, data-label below.
+        Leave data-csv="" to keep the plot hidden.
+      -->
+      <div class="paper-plot"
+           data-csv=""
+           data-delimiter=","
+           data-col=""
+           data-label="">
+        <div class="plot-title" id="plot-title-2"></div>
+        <div class="plot-canvas-wrap">
+          <canvas id="plot-canvas-2" height="200"></canvas>
+          <div class="plot-tooltip" id="plot-tooltip-2"></div>
+        </div>
+        <div class="plot-footer" id="plot-footer-2"></div>
+      </div>
+    </div>
+
+    <!-- PAPER 3 -->
+    <div class="paper">
+      <div class="paper-title">Tax-Based Fiscal Consolidation and the Labor Market: Evidence from Italy</div>
+      <div class="paper-authors">
+        with <a href="https://sites.google.com/view/gabrieleciminelli" target="_blank">Gabriele Ciminelli</a>
+      </div>
+
+      <!--
+        PLOT INSTRUCTIONS:
+        Add your CSV URL below to show a plot for this paper.
+        Leave data-csv="" to keep the plot hidden.
+      -->
+      <div class="paper-plot"
+           data-csv=""
+           data-delimiter=","
+           data-col=""
+           data-label="">
+        <div class="plot-title" id="plot-title-3"></div>
+        <div class="plot-canvas-wrap">
+          <canvas id="plot-canvas-3" height="200"></canvas>
+          <div class="plot-tooltip" id="plot-tooltip-3"></div>
+        </div>
+        <div class="plot-footer" id="plot-footer-3"></div>
+      </div>
+    </div>
+
+  </div><!-- /working papers -->
+
+  <!-- ════════════════════════════════
+       WORK IN PROGRESS
+       Add more <div class="paper"> blocks following the same pattern.
+       Copy a paper block, update the title/authors/abstract,
+       and set data-csv on the paper-plot div.
+  ════════════════════════════════ -->
+  <div class="research-section">
+    <div class="research-section-title">Work in Progress</div>
+
+    <div class="paper" style="border-bottom:none; padding-bottom:0;">
+      <div class="paper-title"><!-- Title here --></div>
+      <div class="paper-authors"><!-- Authors here --></div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════
+       MATERIALS / RESOURCES
+  ════════════════════════════════ -->
+  <div class="research-section">
+    <div class="research-section-title">Materials</div>
+
+    <div class="paper" style="border-bottom:none; padding-bottom:0;">
+      <div class="paper-title">
+        <a href="https://flaviapaoloni.github.io/Intro-to-Time-Series/" target="_blank">Introduction to Time Series</a>
+      </div>
+      <div class="paper-authors" style="margin-top:0.3rem;">Materials and resources for learning time series analysis methods.</div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  <span>Flavia Paoloni</span>
+  <span>University of Amsterdam · Tinbergen Institute</span>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+//  ABSTRACT TOGGLE
+// ─────────────────────────────────────────────
+function toggleAbstract(btn) {
+  btn.classList.toggle('open');
+  const abs = btn.nextElementSibling;
+  abs.classList.toggle('open');
+  btn.querySelector('.arrow').textContent = btn.classList.contains('open') ? '›' : '›';
+}
+
+// ─────────────────────────────────────────────
+//  PLOT ENGINE
+//  Reads all .paper-plot divs, fetches their CSV,
+//  and draws a canvas line chart inline.
+// ─────────────────────────────────────────────
+document.querySelectorAll('.paper-plot').forEach((plotDiv, idx) => {
+  const csvUrl    = plotDiv.dataset.csv;
+  const delimiter = plotDiv.dataset.delimiter || ',';
+  const col       = plotDiv.dataset.col;
+  const label     = plotDiv.dataset.label || '';
+
+  if (!csvUrl || !col) return;   // no URL → stay hidden
+
+  Papa.parse(csvUrl, {
+    download: true,
+    header: true,
+    delimiter,
+    skipEmptyLines: true,
+    complete: ({ data }) => {
+      if (!data || data.length === 0) return;
+      plotDiv.classList.add('visible');
+      drawPlot(data, col, label, idx + 1);
+    }
+  });
+});
+
+function drawPlot(data, col, label, n) {
+  const years  = data.map(r => r.year ?? '');
+  const vals   = data.map(r => parseFloat(r[col]));
+  const good   = vals.filter(v => !isNaN(v));
+  if (good.length === 0) return;
+
+  const minV   = Math.min(...good);
+  const maxV   = Math.max(...good);
+
+  const titleEl   = document.getElementById('plot-title-'   + n);
+  const footerEl  = document.getElementById('plot-footer-'  + n);
+  const canvas    = document.getElementById('plot-canvas-'  + n);
+  const tooltipEl = document.getElementById('plot-tooltip-' + n);
+
+  if (titleEl)  titleEl.textContent  = label;
+  if (footerEl) footerEl.textContent = `${years[0]} – ${years[years.length-1]} · ${data.length} observations · Source: CBS`;
+
+  const dpr  = window.devicePixelRatio || 1;
+  const W    = canvas.offsetWidth || 800;
+  const H    = 200;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx  = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const pad    = { top: 16, right: 16, bottom: 36, left: 70 };
+  const chartW = W - pad.left - pad.right;
+  const chartH = H - pad.top  - pad.bottom;
+
+  const yPad   = (maxV - minV) * 0.1;
+  const yMin   = minV - yPad;
+  const yMax   = maxV + yPad;
+  const xS     = i => pad.left + (i / (years.length - 1)) * chartW;
+  const yS     = v => pad.top  + chartH - ((v - yMin) / (yMax - yMin)) * chartH;
+
+  // Grid
+  ctx.strokeStyle = '#e8e4de';
+  ctx.lineWidth   = 1;
+  ctx.font        = '9px DM Mono, monospace';
+  ctx.fillStyle   = '#9a9080';
+  ctx.textAlign   = 'right';
+
+  const ticks = 4;
+  for (let t = 0; t <= ticks; t++) {
+    const v = yMin + (t / ticks) * (yMax - yMin);
+    const y = yS(v);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + chartW, y);
+    ctx.stroke();
+    // Format large numbers compactly
+    const disp = v >= 1000 ? '€' + Math.round(v / 1000) + 'k' : Math.round(v).toString();
+    ctx.fillText(disp, pad.left - 6, y + 3);
+  }
+
+  // x labels
+  ctx.textAlign = 'center';
+  const step = Math.max(1, Math.floor(years.length / 6));
+  years.forEach((yr, i) => {
+    if (i % step === 0 || i === years.length - 1)
+      ctx.fillText(yr, xS(i), H - pad.bottom + 14);
+  });
+
+  // Fill
+  const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
+  grad.addColorStop(0, 'rgba(139,74,47,0.12)');
+  grad.addColorStop(1, 'rgba(139,74,47,0)');
+
+  ctx.beginPath();
+  vals.forEach((v, i) => {
+    if (isNaN(v)) return;
+    i === 0 ? ctx.moveTo(xS(i), yS(v)) : ctx.lineTo(xS(i), yS(v));
+  });
+  ctx.lineTo(xS(vals.length - 1), pad.top + chartH);
+  ctx.lineTo(xS(0), pad.top + chartH);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  ctx.strokeStyle = '#8b4a2f';
+  ctx.lineWidth   = 2;
+  vals.forEach((v, i) => {
+    if (isNaN(v)) return;
+    i === 0 ? ctx.moveTo(xS(i), yS(v)) : ctx.lineTo(xS(i), yS(v));
+  });
+  ctx.stroke();
+
+  // Tooltip
+  canvas.addEventListener('mousemove', e => {
+    const rect  = canvas.getBoundingClientRect();
+    const scale = rect.width / W;
+    const inner = (e.clientX - rect.left) - pad.left * scale;
+
+    if (inner < 0 || inner > chartW * scale) {
+      tooltipEl.classList.remove('visible');
+      return;
+    }
+
+    const idx     = Math.round((inner / (chartW * scale)) * (years.length - 1));
+    const clamped = Math.max(0, Math.min(idx, years.length - 1));
+    const v       = vals[clamped];
+    const disp    = isNaN(v) ? '—' : (v >= 1000 ? '€' + Math.round(v).toLocaleString('nl-NL') : v.toFixed(2));
+
+    tooltipEl.innerHTML = `<strong>${years[clamped]}</strong><br>${disp}`;
+    tooltipEl.style.left = (xS(clamped) * scale + 10) + 'px';
+    tooltipEl.style.top  = '0px';
+    tooltipEl.classList.add('visible');
+  });
+
+  canvas.addEventListener('mouseleave', () => tooltipEl.classList.remove('visible'));
+
+  window.addEventListener('resize', () => {
+    const newW = canvas.offsetWidth;
+    canvas.width  = newW * dpr;
+    canvas.height = H * dpr;
+    ctx.scale(dpr, dpr);
+    drawPlot(data, col, label, n);
+  });
+}
+</script>
+</body>
+</html>
