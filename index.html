@@ -48,7 +48,23 @@
             font-weight: 600;
             color: #2c3e50;
         }
+.nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
+  .nav-name {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
         nav ul {
             list-style: none;
             display: flex;
@@ -447,6 +463,8 @@
                 display: block;
             }
 
+            
+
             nav ul {
                 position: absolute;
                 top: 100%;
@@ -485,10 +503,10 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+   <!--  <header>
         <div class="header-content">
           <!--  <div class="site-title">Flavia Paoloni</div> -->
-            <div class="site-title">
+          <!--   <div class="site-title">
                 <a href="#" style="text-decoration: none; color: inherit;">Flavia Paoloni</a>
             </div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -503,7 +521,22 @@
                 </ul>
             </nav>
         </div>
-    </header>
+    </header> -->
+    <header>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html">Flavia Paoloni</a>
+    <button class="menu-toggle" onclick="document.getElementById('nm').classList.toggle('open')">☰</button>
+    <nav>
+      <ul id="nm">
+        <li><a href="index.html" class="active">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="Paoloni_F_CV.pdf" target="_blank">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
     <!-- Main Container -->
     <div class="container">
