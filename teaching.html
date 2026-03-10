@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Flavia Paoloni</title>
+    <meta name="description" content="Research — Flavia Paoloni, PhD Candidate in Economics">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background-color: #fff;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .site-title a { text-decoration: none; color: inherit; }
+
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active { color: #2c3e50; }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        /* ── SECTIONS ── */
+        section { margin-bottom: 4rem; scroll-margin-top: 100px; }
+
+        section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* ── SUBSECTION LABELS (Working Papers / Work in Progress / Materials) ── */
+        .subsection-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* ── PAPER ITEMS ── */
+        .paper-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .paper-item:last-child { border-bottom: none; }
+
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.4rem;
+        }
+
+        .paper-authors {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .paper-authors a { color: #3498db; text-decoration: none; }
+        .paper-authors a:hover { text-decoration: underline; }
+
+        .paper-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.8rem;
+        }
+
+        .paper-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .paper-link:hover { border-bottom-color: #3498db; }
+
+        /* abstract */
+        .abstract-toggle {
+            color: #3498db;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .paper-abstract {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+            transition: all 0.3s ease;
+        }
+
+        /* ── PLOT ──
+           HOW TO ADD A PLOT TO A PAPER:
+           Find the .paper-plot div below the paper entry and set:
+             data-csv      = raw GitHub URL of your CSV
+             data-delimiter = ";" or ","
+             data-col      = the column name to plot (your CSV must also have a "year" column)
+             data-label    = description shown above the chart
+           Leave data-csv="" to keep the plot hidden.
+        */
+        .paper-plot {
+            margin-top: 1.2rem;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            padding: 18px 18px 10px;
+            display: none;
+        }
+
+        .paper-plot.visible { display: block; }
+
+        .plot-label {
+            font-size: 0.82rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .plot-canvas-wrap { position: relative; width: 100%; }
+        .plot-canvas-wrap canvas { display: block; width: 100%; }
+
+        .plot-tooltip {
+            position: absolute;
+            background: #2c3e50;
+            color: #fff;
+            padding: 7px 12px;
+            font-size: 0.82rem;
+            font-family: 'Georgia', serif;
+            line-height: 1.5;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            white-space: nowrap;
+            border-top: 2px solid #3498db;
+            z-index: 10;
+        }
+
+        .plot-tooltip.visible { opacity: 1; }
+
+        .plot-source {
+            font-size: 0.78rem;
+            color: #bbb;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* ── MOBILE ── */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .header-content { padding: 1rem; }
+            .menu-toggle { display: block; }
+            nav ul {
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                display: none;
+                gap: 0;
+            }
+            nav ul.active { display: flex; }
+            nav li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
+            .container { padding: 6rem 1.5rem 3rem; }
+            section h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-content">
+        <div class="site-title">
+            <a href="index.html">Flavia Paoloni</a>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">About</a></li>
+                <li><a href="research.html" >Research</a></li>
+                <li><a href="teaching.html" class="active">Teaching</a></li>
+                <li><a href="index.html#cv">CV</a></li>
+                <li><a href="index.html#material">Materials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN -->
+<div class="container">
+ <section id="teaching">
+            <h2>Teaching</h2>
+            <div class="timeline-item">
+                <h3>University of Amsterdam</h3>
+                <div class="timeline-meta">Macroeconomics 1 (undergraduate) - Professor Koen Vermeylen - Spring 2026</div>
+                <div class="timeline-meta">Monetary and Fiscal Policy (undergraduate) - Professor Massimo Giuliodori - Spring 2023 until Spring 2026</div>
+                <div class="timeline-meta">Statistics 1 for Economics (undergraduate) - Professor Brian Droop - Spring 2021</div>
+            </div>
+            <div class="timeline-item">
+                <h3>Tinbergen Institute</h3>
+                <div class="timeline-meta">Macroeconomics II (graduate) - Professor Christian Stoltenberg - Spring 2022</div>
+                <div class="timeline-meta">Macroeconomics IV (graduate) - Professor Xuan Wang - Spring 2023, Spring 2024</div>
+            </div>
+            <div class="timeline-item">
+                <h3>Vrije Universiteit Amsterdam</h3>
+                <div class="timeline-meta">Mathematical Economics I (undergraduate) - Professors Rene van den Brink and Harold Houba - Fall 2021</div>
+                <div class="timeline-meta">Mathematical Economics II (undergraduate) - Professors Ines Lindner and José L. Moraga - Spring 2022</div>
+            </div>
+            <div class="timeline-item">
+                <h3>Thesis Supervisor</h3>
+                <div class="timeline-meta">I supervise Bachelor theses on the following topics: house prices and macrofundamentals, energy prices and inflation, Covid shock on stock price indexes. The students have implemented time series methods to analyse their research questions.</div>
+            </div>
+        </section>
+
+        <!-- ══ MATERIALS ══ -->
+        <div class="subsection-label" style="margin-top:3rem;">Materials</div>
+
+        <div class="paper-item" style="border-bottom:none; padding-bottom:0;">
+            <div class="paper-title">Introduction to Time Series</div>
+            <p style="color:#555; font-size:1rem; margin-top:0.3rem;">
+                Materials and resources for learning time series analysis methods.
+            </p>
+            <p style="margin-top:0.5rem;">
+                <a href="https://flaviapaoloni.github.io/Intro-to-Time-Series/" target="_blank" class="paper-link">
+                    View Material
+                </a>
+            </p>
+        </div>
+
+    </section>
+</div>
+
+<footer>
+    © Flavia Paoloni · University of Amsterdam · Tinbergen Institute
+</footer>
+
+<script>
+    // ── Abstract toggle (identical logic to index.html) ──
+    document.querySelectorAll('.abstract-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+            var abstract = this.nextElementSibling;
+            if (abstract.style.display === 'none') {
+                abstract.style.display = 'block';
+                this.textContent = 'Hide Abstract';
+            } else {
+                abstract.style.display = 'none';
+                this.textContent = 'Show Abstract';
+            }
+        });
+    });
+
+    // ── Mobile menu ──
+    function toggleMenu() {
+        document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    // ── Plot engine ──
+    document.querySelectorAll('.paper-plot').forEach(function(plotDiv, idx) {
+        var csvUrl    = plotDiv.dataset.csv;
+        var delimiter = plotDiv.dataset.delimiter || ',';
+        var col       = plotDiv.dataset.col;
+        var label     = plotDiv.dataset.label || '';
+        var n         = idx + 1;
+
+        if (!csvUrl || !col) return; // no data → stay hidden
+
+        Papa.parse(csvUrl, {
+            download: true,
+            header: true,
+            delimiter: delimiter,
+            skipEmptyLines: true,
+            complete: function(results) {
+                if (!results.data || results.data.length === 0) return;
+                plotDiv.classList.add('visible');
+                drawPlot(results.data, col, label, n);
+            }
+        });
+    });
+
+    function drawPlot(data, col, label, n) {
+        var years = data.map(function(r) { return r.year || ''; });
+        var vals  = data.map(function(r) { return parseFloat(r[col]); });
+        var good  = vals.filter(function(v) { return !isNaN(v); });
+        if (!good.length) return;
+
+        var minV = Math.min.apply(null, good);
+        var maxV = Math.max.apply(null, good);
+
+        var labelEl  = document.getElementById('plot-label-'   + n);
+        var sourceEl = document.getElementById('plot-source-'  + n);
+        var canvas   = document.getElementById('plot-canvas-'  + n);
+        var tipEl    = document.getElementById('plot-tooltip-' + n);
+
+        if (labelEl)  labelEl.textContent  = label;
+        if (sourceEl) sourceEl.textContent =
+            years[0] + ' – ' + years[years.length - 1] + ' · ' + data.length + ' observations';
+
+        var dpr = window.devicePixelRatio || 1;
+        var W   = canvas.offsetWidth || 820;
+        var H   = 220;
+        canvas.width  = W * dpr;
+        canvas.height = H * dpr;
+        var ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+
+        var pad    = { top: 16, right: 16, bottom: 36, left: 72 };
+        var chartW = W - pad.left - pad.right;
+        var chartH = H - pad.top  - pad.bottom;
+        var yPad   = (maxV - minV) * 0.1;
+        var yMin   = minV - yPad;
+        var yMax   = maxV + yPad;
+
+        function xS(i) { return pad.left + (i / (years.length - 1)) * chartW; }
+        function yS(v) { return pad.top  + chartH - ((v - yMin) / (yMax - yMin)) * chartH; }
+
+        // Grid & y-axis
+        ctx.strokeStyle = '#e0e0e0';
+        ctx.lineWidth   = 1;
+        ctx.font        = '10px Georgia, serif';
+        ctx.fillStyle   = '#999';
+        ctx.textAlign   = 'right';
+
+        for (var t = 0; t <= 4; t++) {
+            var v = yMin + (t / 4) * (yMax - yMin);
+            var y = yS(v);
+            ctx.beginPath();
+            ctx.moveTo(pad.left, y);
+            ctx.lineTo(pad.left + chartW, y);
+            ctx.stroke();
+            var disp = v >= 1000
+                ? '€' + Math.round(v / 1000) + 'k'
+                : Math.round(v).toString();
+            ctx.fillText(disp, pad.left - 6, y + 4);
+        }
+
+        // x-axis labels
+        ctx.textAlign = 'center';
+        var step = Math.max(1, Math.floor(years.length / 7));
+        years.forEach(function(yr, i) {
+            if (i % step === 0 || i === years.length - 1)
+                ctx.fillText(yr, xS(i), H - pad.bottom + 16);
+        });
+
+        // Fill
+        var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
+        grad.addColorStop(0, 'rgba(44,62,80,0.10)');
+        grad.addColorStop(1, 'rgba(44,62,80,0)');
+
+        ctx.beginPath();
+        vals.forEach(function(v, i) {
+            if (isNaN(v)) return;
+            if (i === 0) ctx.moveTo(xS(i), yS(v));
+            else         ctx.lineTo(xS(i), yS(v));
+        });
+        ctx.lineTo(xS(vals.length - 1), pad.top + chartH);
+        ctx.lineTo(xS(0), pad.top + chartH);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Line — matches site's dark navy
+        ctx.beginPath();
+        ctx.strokeStyle = '#2c3e50';
+        ctx.lineWidth   = 2;
+        vals.forEach(function(v, i) {
+            if (isNaN(v)) return;
+            if (i === 0) ctx.moveTo(xS(i), yS(v));
+            else         ctx.lineTo(xS(i), yS(v));
+        });
+        ctx.stroke();
+
+        // Tooltip
+        canvas.addEventListener('mousemove', function(e) {
+            var rect  = canvas.getBoundingClientRect();
+            var scale = rect.width / W;
+            var inner = (e.clientX - rect.left) - pad.left * scale;
+            if (inner < 0 || inner > chartW * scale) {
+                tipEl.classList.remove('visible');
+                return;
+            }
+            var idx     = Math.round((inner / (chartW * scale)) * (years.length - 1));
+            var clamped = Math.max(0, Math.min(idx, years.length - 1));
+            var hv      = vals[clamped];
+            var disp    = isNaN(hv) ? '—'
+                : (hv >= 1000 ? '€' + Math.round(hv).toLocaleString('nl-NL') : hv.toFixed(2));
+            tipEl.innerHTML = '<strong>' + years[clamped] + '</strong><br>' + disp;
+            tipEl.style.left = (xS(clamped) * scale + 10) + 'px';
+            tipEl.style.top  = '0px';
+            tipEl.classList.add('visible');
+        });
+
+        canvas.addEventListener('mouseleave', function() {
+            tipEl.classList.remove('visible');
+        });
+
+        window.addEventListener('resize', function() {
+            canvas.width  = canvas.offsetWidth * dpr;
+            canvas.height = H * dpr;
+            ctx.scale(dpr, dpr);
+            drawPlot(data, col, label, n);
+        });
+    }
+</script>
+</body>
+</html>
