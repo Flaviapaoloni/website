@@ -26,14 +26,14 @@
             z-index: 1000;
         }
 
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .header-content {
+    max-width: 1100px; /* Changed from 900px to match .page-layout */
+    margin: 0 auto;
+    padding: 1.5rem 30px; /* 30px matches your .sidebar padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
         .site-title {
             font-size: 1.8rem;
@@ -42,12 +42,21 @@
         }
 
         .site-title a { text-decoration: none; color: inherit; }
-.page-layout{
+        
+
+/* 2. Ensure Page Layout has no extra side margins on mobile */
+.page-layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto; /* Centers the container */
+    padding: 0;     /* Remove auto padding here, handled by children */
+}
+/* .page-layout{
     display: flex;
     max-width: 1100px;
     margin: auto;
 }
-
+*/
 /* LEFT COLUMN */
 
     .sidebar{
@@ -96,6 +105,7 @@
 }
 
 /* RIGHT COLUMN */
+
 .content {
     flex: 1;
     padding: 40px;
@@ -256,7 +266,7 @@
             margin-top: 6px;
             font-style: italic;
         }
-                /* CV Preview */
+    /* CV Preview */
         .cv-preview {
             margin-top: 2rem;
             border: 1px solid #e0e0e0;
@@ -320,6 +330,7 @@
             border-color: #2980b9;
         }
 
+
         /* ── FOOTER ── */
         footer {
             max-width: 900px;
@@ -359,6 +370,10 @@
             nav li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
             .container { padding: 6rem 1.5rem 3rem; }
             section h2 { font-size: 1.5rem; }
+            .sidebar {
+        width: 100%;
+        padding: 20px; /* You might want smaller padding on mobile */
+    }
         }
     </style>
 </head>
@@ -375,8 +390,8 @@
             <ul id="navMenu">
                 <li><a href="index.html">About</a></li>
                 <li><a href="research.html" >Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html"  class="active">CV</a></li>
+                <li><a href="teaching.html" >Teaching</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
                 <li><a href="material.html">Materials</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
@@ -412,6 +427,7 @@
     </aside>
 
    
+                  
 <div class="content">
 <!-- MAIN -->
     <section id="cv">
