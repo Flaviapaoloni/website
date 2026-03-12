@@ -26,14 +26,15 @@
             z-index: 1000;
         }
 
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .header-content {
+    max-width: 1100px; /* Changed from 900px to match .page-layout */
+    margin: 0 auto;
+    padding: 1.5rem 30px; /* 30px matches your .sidebar padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
         .site-title {
             font-size: 1.8rem;
@@ -42,12 +43,14 @@
         }
 
         .site-title a { text-decoration: none; color: inherit; }
-.page-layout{
+
+/* 2. Ensure Page Layout has no extra side margins on mobile */
+.page-layout {
     display: flex;
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto; /* Centers the container */
+    padding: 0;     /* Remove auto padding here, handled by children */
 }
-
 /* LEFT COLUMN */
 
     .sidebar{
