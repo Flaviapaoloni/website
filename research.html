@@ -307,8 +307,16 @@
             .container { padding: 6rem 1.5rem 3rem; }
             section h2 { font-size: 1.5rem; }
             .sidebar {
-        width: 100%;
-        padding: 20px; /* You might want smaller padding on mobile */
+        display: none;
+    }
+
+    .page-layout {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 6rem 20px 3rem;
+        max-width: 100%;
     }
         }
     </style>
