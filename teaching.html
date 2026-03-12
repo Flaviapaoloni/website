@@ -307,8 +307,16 @@
             .container { padding: 6rem 1.5rem 3rem; }
             section h2 { font-size: 1.5rem; }
             .sidebar {
-        width: 100%;
-        padding: 20px; /* You might want smaller padding on mobile */
+        display: none;
+    }
+
+    .page-layout {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 6rem 20px 3rem;
+        max-width: 100%;
     }
         }
     </style>
@@ -394,7 +402,24 @@
         </section>
 
 </div>
- 
+ <div class="content">
+<section id="material">
+        <h2>Materials</h2>
+        <!-- ══ MATERIALS ══ -->
+    
+        <div class="paper-item" style="border-bottom:none; padding-bottom:0;">
+            <div class="paper-title">Introduction to Time Series</div>
+         <p style="color:#555; font-size:1rem; margin-top:0.3rem;">
+                Materials and resources for learning time series analysis methods.
+            </p>
+            <p style="margin-top:0.5rem;">
+                <a href="https://flaviapaoloni.github.io/Intro-to-Time-Series/" target="_blank" class="paper-link">
+                    View Material
+                </a>
+            </p> 
+        </div>
+</section>
+</div>
 
 </div>
 <footer>
