@@ -3,321 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching — Flavia Paoloni</title>
-    <meta name="description" content="Teaching — Flavia Paoloni, PhD Candidate in Economics">
+    <title>Research — Flavia Paoloni</title>
+    <meta name="description" content="Research — Flavia Paoloni, PhD Candidate in Economics">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.8;
-            color: #2c3e50;
-            background-color: #fff;
-        }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.8; color: #2c3e50; background-color: #fff; }
 
         /* ── HEADER ── */
-        header {
-            background-color: #fff;
-            border-bottom: 1px solid #e0e0e0;
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-        }
-
-      .header-content {
-    max-width: 1100px; /* Changed from 900px to match .page-layout */
-    margin: 0 auto;
-    padding: 1.5rem 30px; /* 30px matches your .sidebar padding */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
+        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+        .header-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 30px; display: flex; justify-content: space-between; align-items: center; }
+        .site-title { font-size: 1.8rem; font-weight: 600; color: #2c3e50; }
         .site-title a { text-decoration: none; color: inherit; }
-        
-
-/* 2. Ensure Page Layout has no extra side margins on mobile */
-.page-layout {
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto; /* Centers the container */
-    padding: 0;     /* Remove auto padding here, handled by children */
-}
-/* .page-layout{
-    display: flex;
-    max-width: 1100px;
-    margin: auto;
-}
-*/
-/* LEFT COLUMN */
-
-    .sidebar{
-    width: 260px;
-    padding: 30px;
-    position: sticky;
-    top: 120px;
-    height: fit-content;
-}
-
-.sidebar h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-.sidebar p {
-    font-size: 0.9rem;
-    color: #666;
-}
-        .sidebar .contact-icons {
-    display: flex;
-    flex-direction: row;
-    gap: 0.8rem;
-    margin-top: 0.8rem;
-}
-        .sidebar .contact-icons {
-    display: flex;
-    flex-direction: row;
-    gap: 0.8rem;
-    margin-top: 0.8rem;
-}
-/* PHOTO */
-
-.profile-photo{
-    width: 170px;
-    height: 200px; 
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
-
-/* SOCIAL LINKS */
-
-.social-links a{
-    display: block;
-    margin: 8px 0;
-}
-
-/* RIGHT COLUMN */
-
-.content {
-    flex: 1;
-    padding: 40px;
-    padding-top: 8rem;    /* clears the fixed header */
-    max-width: 800px;
-}
-    
         nav ul { list-style: none; display: flex; gap: 2rem; }
-
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
+        nav a { text-decoration: none; color: #555; font-size: 1rem; transition: color 0.3s; }
         nav a:hover, nav a.active { color: #2c3e50; }
 
-        /* ── CONTAINER ── */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
-        }
+        /* ── PAGE LAYOUT ── */
+        .page-layout { display: flex; max-width: 1100px; margin: 0 auto; padding: 0; }
+
+        /* ── SIDEBAR ── */
+        .sidebar { width: 260px; padding: 30px; padding-top: 8rem; position: sticky; top: 0; height: 100vh; flex-shrink: 0; }
+
+        .profile-photo { width: 170px; height: auto; border-radius: 4px; margin-bottom: 14px; display: block; }
+
+        .sidebar h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+        .sidebar .subtitle { font-size: 0.9rem; color: #666; margin-bottom: 0.6rem; }
+
+        .contact-icons { display: flex; flex-direction: row; gap: 0.8rem; margin-top: 0.4rem; }
+        .contact-icon { width: 30px; height: 30px; flex-shrink: 0; }
+
+        /* ── MAIN CONTENT ── */
+        .content { flex: 1; padding: 40px; padding-top: 8rem; max-width: 800px; }
 
         /* ── SECTIONS ── */
         section { margin-bottom: 4rem; scroll-margin-top: 100px; }
-
-        section h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        /* ── SUBSECTION LABELS (Working Papers / Work in Progress / Materials) ── */
-        .subsection-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #555;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.3rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        section h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 2rem; color: #2c3e50; padding-bottom: 0.5rem; border-bottom: 1px solid #e0e0e0; }
 
         /* ── PAPER ITEMS ── */
-        .paper-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
+        .paper-item { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid #f0f0f0; }
         .paper-item:last-child { border-bottom: none; }
-
-        .paper-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.4rem;
-        }
-
-        .paper-authors {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-
+        .paper-title { font-size: 1.15rem; font-weight: 600; color: #2c3e50; margin-bottom: 0.4rem; }
+        .paper-authors { color: #666; font-size: 0.95rem; margin-bottom: 0.8rem; }
         .paper-authors a { color: #3498db; text-decoration: none; }
         .paper-authors a:hover { text-decoration: underline; }
-
-        .paper-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.8rem;
-        }
-
-        .paper-link {
-            color: #3498db;
-            text-decoration: none;
-            font-size: 0.95rem;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid transparent;
-        }
-
+        .paper-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+        .paper-link { color: #3498db; text-decoration: none; font-size: 0.95rem; padding: 0.4rem 0; border-bottom: 1px solid transparent; }
         .paper-link:hover { border-bottom-color: #3498db; }
+        .abstract-toggle { color: #3498db; cursor: pointer; font-size: 0.95rem; margin-bottom: 0.5rem; display: inline-block; }
+        .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
 
-        /* abstract */
-        .abstract-toggle {
-            color: #3498db;
-            cursor: pointer;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .paper-abstract {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.8;
-            text-align: justify;
-            transition: all 0.3s ease;
-        }
-
-        /* ── PLOT ──
-           HOW TO ADD A PLOT TO A PAPER:
-           Find the .paper-plot div below the paper entry and set:
-             data-csv      = raw GitHub URL of your CSV
-             data-delimiter = ";" or ","
-             data-col      = the column name to plot (your CSV must also have a "year" column)
-             data-label    = description shown above the chart
-           Leave data-csv="" to keep the plot hidden.
-        */
-        .paper-plot {
-            margin-top: 1.2rem;
-            border: 1px solid #e0e0e0;
-            background: #fafafa;
-            padding: 18px 18px 10px;
-            display: none;
-        }
-
+        /* ── PLOT ── */
+        .paper-plot { margin-top: 1.2rem; border: 1px solid #e0e0e0; background: #fafafa; padding: 18px 18px 10px; display: none; }
         .paper-plot.visible { display: block; }
-
-        .plot-label {
-            font-size: 0.82rem;
-            color: #888;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
+        .plot-label { font-size: 0.82rem; color: #888; font-style: italic; margin-bottom: 10px; }
         .plot-canvas-wrap { position: relative; width: 100%; }
         .plot-canvas-wrap canvas { display: block; width: 100%; }
-
-        .plot-tooltip {
-            position: absolute;
-            background: #2c3e50;
-            color: #fff;
-            padding: 7px 12px;
-            font-size: 0.82rem;
-            font-family: 'Georgia', serif;
-            line-height: 1.5;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.15s;
-            white-space: nowrap;
-            border-top: 2px solid #3498db;
-            z-index: 10;
-        }
-
+        .plot-tooltip { position: absolute; background: #2c3e50; color: #fff; padding: 7px 12px; font-size: 0.82rem; font-family: 'Georgia', serif; line-height: 1.5; pointer-events: none; opacity: 0; transition: opacity 0.15s; white-space: nowrap; border-top: 2px solid #3498db; z-index: 10; }
         .plot-tooltip.visible { opacity: 1; }
-
-        .plot-source {
-            font-size: 0.78rem;
-            color: #bbb;
-            margin-top: 6px;
-            font-style: italic;
-        }
+        .plot-source { font-size: 0.78rem; color: #bbb; margin-top: 6px; font-style: italic; }
 
         /* ── FOOTER ── */
-        footer {
-            max-width: 900px;
-            margin: 4rem auto 0;
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-            color: #999;
-            font-size: 0.9rem;
-        }
+        footer { max-width: 1100px; margin: 4rem auto 0; padding: 2rem 30px; text-align: center; border-top: 1px solid #e0e0e0; color: #999; font-size: 0.9rem; }
 
         /* ── MOBILE ── */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #2c3e50;
-        }
-.contact-item { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0; }     
-        .contact-icon { width: 30px; height: 30px; flex-shrink: 0; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #2c3e50; }
+
         @media (max-width: 768px) {
             .header-content { padding: 1rem; }
             .menu-toggle { display: block; }
-            nav ul {
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: #fff;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                display: none;
-                gap: 0;
-            }
+            nav ul { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; gap: 0; }
             nav ul.active { display: flex; }
             nav li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
-            .container { padding: 6rem 1.5rem 3rem; }
+            .sidebar { display: none; }
+            .page-layout { flex-direction: column; }
+            .content { padding: 6rem 20px 3rem; max-width: 100%; }
             section h2 { font-size: 1.5rem; }
-            .sidebar {
-        display: none;
-    }
-
-    .page-layout {
-        flex-direction: column;
-    }
-
-    .content {
-        padding: 6rem 20px 3rem;
-        max-width: 100%;
-    }
         }
     </style>
 </head>
@@ -326,178 +88,113 @@
 <!-- HEADER -->
 <header>
     <div class="header-content">
-        <div class="site-title">
-            <a href="index.html">Flavia Paoloni</a>
-        </div>
+        <div class="site-title"><a href="index.html">Flavia Paoloni</a></div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <nav>
             <ul id="navMenu">
                 <li><a href="index.html">About</a></li>
-                <li><a href="research.html" class="active" >Research</a></li>
-                <li><a href="teaching.html" >Teaching</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
                 <li><a href="cv.html">CV</a></li>
+                <li><a href="material.html">Materials</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-<!-- MAIN -->
+<!-- PAGE LAYOUT -->
 <div class="page-layout">
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-        <img src="Photo_Paoloni_zoom.jpg" class="profile-photo">
-
+        <img src="Photo_Paoloni_zoom.jpg" alt="Flavia Paoloni" class="profile-photo">
         <h2>Flavia Paoloni</h2>
-        <p>PhD Candidate in Economics</p>
-
-<div class="contact-icons">
-            <div class="contact-item">
-                            <a href="mailto:f.paoloni2@uva.nl">
-                                <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="contact-item">
-                            <a href="http://www.linkedin.com/in/flavia-paoloni-25b993154" target="_blank">
-                                <svg class="contact-icon" fill="#0077b5" viewBox="0 0 24 24">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
-                            </a>
-                        </div>
-    </div>
+        <p class="subtitle">PhD Candidate in Economics</p>
+        <div class="contact-icons">
+            <a href="mailto:f.paoloni2@uva.nl">
+                <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+            </a>
+            <a href="http://www.linkedin.com/in/flavia-paoloni-25b993154" target="_blank">
+                <svg class="contact-icon" fill="#0077b5" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+        </div>
     </aside>
 
-   
-<div class="content">
-    <section id="research">
-        <h2>Research</h2>
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        <section id="research">
+            <h2>Research</h2>
 
-        <!-- ══ WORKING PAPERS ══ 
-        <div class="subsection-label">Working Papers</div> -->
-
-        <!-- PAPER 1 -->
-        <div class="paper-item">
-            <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
-            <div class="paper-authors">
-                with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
-                Data access funded by "A Sustainable Future" (ASF) grant.
-            </div>
-            <div class="paper-links">
-                <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
-                <!-- <a href="#" class="paper-link">[Slides]</a> -->
-            </div>
-
-             <!-- Set data-csv / data-col when data is available -->
-            <div class="paper-plot"
-                 data-csv=""
-                 data-delimiter=","
-                 data-col=""
-                 data-label="">
-                <div class="plot-label"  id="plot-label-2"></div>
-                <div class="plot-canvas-wrap">
-                    <canvas id="plot-canvas-2" height="220"></canvas>
-                    <div class="plot-tooltip" id="plot-tooltip-2"></div>
+            <!-- PAPER 1 -->
+            <div class="paper-item">
+                <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
+                <div class="paper-authors">
+                    with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
+                    Data access funded by "A Sustainable Future" (ASF) grant.
                 </div>
-                <div class="plot-source" id="plot-source-2"></div>
-            </div>
-        </div>
-      
-
-        <!-- PAPER 2 -->
-        <div class="paper-item">
-            <div class="paper-title">The long-run relationship between house prices and rents in OECD countries</div>
-            <div class="paper-links">
-                <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
-                <!-- <a href="#" class="paper-link">[Slides]</a> -->
-            </div>
-            <div class="abstract-toggle">Show Abstract</div>
-            <p class="paper-abstract" style="display:none;">
-                I test whether house prices and rents are related in the long and short run using a new quarterly
-                dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents
-                correspond to the yearly net present value of house expenses, a function of prices. It follows
-                that house prices and rents should be positively related. I find evidence of cointegration in
-                only half of countries using Johansen tests. I observe a negative response of rents to a positive
-                shock in house prices. Two factors might explain these results: heterogeneity in house quality
-                reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
-            </p>
-
-            <!-- Set data-csv / data-col when data is available -->
-            <div class="paper-plot"
-                 data-csv=""
-                 data-delimiter=","
-                 data-col=""
-                 data-label="">
-                <div class="plot-label"  id="plot-label-2"></div>
-                <div class="plot-canvas-wrap">
-                    <canvas id="plot-canvas-2" height="220"></canvas>
-                    <div class="plot-tooltip" id="plot-tooltip-2"></div>
+                <div class="paper-plot" data-csv="" data-delimiter="," data-col="" data-label="">
+                    <div class="plot-label" id="plot-label-1"></div>
+                    <div class="plot-canvas-wrap">
+                        <canvas id="plot-canvas-1" height="220"></canvas>
+                        <div class="plot-tooltip" id="plot-tooltip-1"></div>
+                    </div>
+                    <div class="plot-source" id="plot-source-1"></div>
                 </div>
-                <div class="plot-source" id="plot-source-2"></div>
-            </div>
-        </div>
-
-        <!-- PAPER 3 -->
-        <div class="paper-item">
-            <div class="paper-title">Tax-Based Fiscal Consolidation and the Labor Market: Evidence from Italy</div>
-            <div class="paper-authors">
-                with <a href="https://sites.google.com/view/gabrieleciminelli" target="_blank">Gabriele Ciminelli</a>
-            </div>
-            <div class="paper-links">
-                <!-- <a href="#" class="paper-link">[Working Paper]</a> -->
-                <!-- <a href="#" class="paper-link">[Slides]</a> -->
             </div>
 
-            <!-- Set data-csv / data-col when data is available -->
-            <div class="paper-plot"
-                 data-csv=""
-                 data-delimiter=","
-                 data-col=""
-                 data-label="">
-                <div class="plot-label"  id="plot-label-3"></div>
-                <div class="plot-canvas-wrap">
-                    <canvas id="plot-canvas-3" height="220"></canvas>
-                    <div class="plot-tooltip" id="plot-tooltip-3"></div>
+            <!-- PAPER 2 -->
+            <div class="paper-item">
+                <div class="paper-title">The long-run relationship between house prices and rents in OECD countries</div>
+                <div class="abstract-toggle">Show Abstract</div>
+                <p class="paper-abstract" style="display:none;">
+                    I test whether house prices and rents are related in the long and short run using a new quarterly
+                    dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents
+                    correspond to the yearly net present value of house expenses, a function of prices. It follows
+                    that house prices and rents should be positively related. I find evidence of cointegration in
+                    only half of countries using Johansen tests. I observe a negative response of rents to a positive
+                    shock in house prices. Two factors might explain these results: heterogeneity in house quality
+                    reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
+                </p>
+                <div class="paper-plot" data-csv="" data-delimiter="," data-col="" data-label="">
+                    <div class="plot-label" id="plot-label-2"></div>
+                    <div class="plot-canvas-wrap">
+                        <canvas id="plot-canvas-2" height="220"></canvas>
+                        <div class="plot-tooltip" id="plot-tooltip-2"></div>
+                    </div>
+                    <div class="plot-source" id="plot-source-2"></div>
                 </div>
-                <div class="plot-source" id="plot-source-3"></div>
             </div>
-        </div>
 
-        <!-- ══ WORK IN PROGRESS ══
-             Copy a .paper-item block above and paste it here to add a new paper.
-        ══ 
-        <div class="subsection-label">Work in Progress</div>
+            <!-- PAPER 3 -->
+            <div class="paper-item" style="border-bottom:none; padding-bottom:0;">
+                <div class="paper-title">Tax-Based Fiscal Consolidation and the Labor Market: Evidence from Italy</div>
+                <div class="paper-authors">
+                    with <a href="https://sites.google.com/view/gabrieleciminelli" target="_blank">Gabriele Ciminelli</a>
+                </div>
+                <div class="paper-plot" data-csv="" data-delimiter="," data-col="" data-label="">
+                    <div class="plot-label" id="plot-label-3"></div>
+                    <div class="plot-canvas-wrap">
+                        <canvas id="plot-canvas-3" height="220"></canvas>
+                        <div class="plot-tooltip" id="plot-tooltip-3"></div>
+                    </div>
+                    <div class="plot-source" id="plot-source-3"></div>
+                </div>
+            </div>
 
-        <div class="paper-item" style="color:#888; font-style:italic; border-bottom:none; padding-bottom:0;">
-            Coming soon.
-        </div>-->
-
-        <!-- ══ MATERIALS ══ -->
-       <!--  <div class="subsection-label" style="margin-top:3rem;">Materials</div>
-
-        <div class="paper-item" style="border-bottom:none; padding-bottom:0;">
-            <div class="paper-title">Introduction to Time Series</div>
-            <p style="color:#555; font-size:1rem; margin-top:0.3rem;">
-                Materials and resources for learning time series analysis methods.
-            </p>
-            <p style="margin-top:0.5rem;">
-                <a href="https://flaviapaoloni.github.io/Intro-to-Time-Series/" target="_blank" class="paper-link">
-                    View Material
-                </a>
-            </p>
-        </div>-->
-
-    </section>
-</div>
-</div>
+        </section>
+    </div><!-- /.content -->
+</div><!-- /.page-layout -->
 
 <footer>
     © Flavia Paoloni · University of Amsterdam · Tinbergen Institute
 </footer>
 
 <script>
-    // ── Abstract toggle (identical logic to index.html) ──
     document.querySelectorAll('.abstract-toggle').forEach(function(toggle) {
         toggle.addEventListener('click', function() {
             var abstract = this.nextElementSibling;
@@ -511,26 +208,19 @@
         });
     });
 
-    // ── Mobile menu ──
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
     }
 
-    // ── Plot engine ──
     document.querySelectorAll('.paper-plot').forEach(function(plotDiv, idx) {
         var csvUrl    = plotDiv.dataset.csv;
         var delimiter = plotDiv.dataset.delimiter || ',';
         var col       = plotDiv.dataset.col;
         var label     = plotDiv.dataset.label || '';
         var n         = idx + 1;
-
-        if (!csvUrl || !col) return; // no data → stay hidden
-
+        if (!csvUrl || !col) return;
         Papa.parse(csvUrl, {
-            download: true,
-            header: true,
-            delimiter: delimiter,
-            skipEmptyLines: true,
+            download: true, header: true, delimiter: delimiter, skipEmptyLines: true,
             complete: function(results) {
                 if (!results.data || results.data.length === 0) return;
                 plotDiv.classList.add('visible');
@@ -544,19 +234,14 @@
         var vals  = data.map(function(r) { return parseFloat(r[col]); });
         var good  = vals.filter(function(v) { return !isNaN(v); });
         if (!good.length) return;
-
         var minV = Math.min.apply(null, good);
         var maxV = Math.max.apply(null, good);
-
         var labelEl  = document.getElementById('plot-label-'   + n);
         var sourceEl = document.getElementById('plot-source-'  + n);
         var canvas   = document.getElementById('plot-canvas-'  + n);
         var tipEl    = document.getElementById('plot-tooltip-' + n);
-
-        if (labelEl)  labelEl.textContent  = label;
-        if (sourceEl) sourceEl.textContent =
-            years[0] + ' – ' + years[years.length - 1] + ' · ' + data.length + ' observations';
-
+        if (labelEl)  labelEl.textContent = label;
+        if (sourceEl) sourceEl.textContent = years[0] + ' – ' + years[years.length - 1] + ' · ' + data.length + ' observations';
         var dpr = window.devicePixelRatio || 1;
         var W   = canvas.offsetWidth || 820;
         var H   = 220;
@@ -564,102 +249,53 @@
         canvas.height = H * dpr;
         var ctx = canvas.getContext('2d');
         ctx.scale(dpr, dpr);
-
         var pad    = { top: 16, right: 16, bottom: 36, left: 72 };
         var chartW = W - pad.left - pad.right;
         var chartH = H - pad.top  - pad.bottom;
         var yPad   = (maxV - minV) * 0.1;
         var yMin   = minV - yPad;
         var yMax   = maxV + yPad;
-
         function xS(i) { return pad.left + (i / (years.length - 1)) * chartW; }
         function yS(v) { return pad.top  + chartH - ((v - yMin) / (yMax - yMin)) * chartH; }
-
-        // Grid & y-axis
-        ctx.strokeStyle = '#e0e0e0';
-        ctx.lineWidth   = 1;
-        ctx.font        = '10px Georgia, serif';
-        ctx.fillStyle   = '#999';
-        ctx.textAlign   = 'right';
-
+        ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 1;
+        ctx.font = '10px Georgia, serif'; ctx.fillStyle = '#999'; ctx.textAlign = 'right';
         for (var t = 0; t <= 4; t++) {
             var v = yMin + (t / 4) * (yMax - yMin);
             var y = yS(v);
-            ctx.beginPath();
-            ctx.moveTo(pad.left, y);
-            ctx.lineTo(pad.left + chartW, y);
-            ctx.stroke();
-            var disp = v >= 1000
-                ? '€' + Math.round(v / 1000) + 'k'
-                : Math.round(v).toString();
+            ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + chartW, y); ctx.stroke();
+            var disp = v >= 1000 ? '€' + Math.round(v / 1000) + 'k' : Math.round(v).toString();
             ctx.fillText(disp, pad.left - 6, y + 4);
         }
-
-        // x-axis labels
         ctx.textAlign = 'center';
         var step = Math.max(1, Math.floor(years.length / 7));
-        years.forEach(function(yr, i) {
-            if (i % step === 0 || i === years.length - 1)
-                ctx.fillText(yr, xS(i), H - pad.bottom + 16);
-        });
-
-        // Fill
+        years.forEach(function(yr, i) { if (i % step === 0 || i === years.length - 1) ctx.fillText(yr, xS(i), H - pad.bottom + 16); });
         var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
-        grad.addColorStop(0, 'rgba(44,62,80,0.10)');
-        grad.addColorStop(1, 'rgba(44,62,80,0)');
-
+        grad.addColorStop(0, 'rgba(44,62,80,0.10)'); grad.addColorStop(1, 'rgba(44,62,80,0)');
         ctx.beginPath();
-        vals.forEach(function(v, i) {
-            if (isNaN(v)) return;
-            if (i === 0) ctx.moveTo(xS(i), yS(v));
-            else         ctx.lineTo(xS(i), yS(v));
-        });
-        ctx.lineTo(xS(vals.length - 1), pad.top + chartH);
-        ctx.lineTo(xS(0), pad.top + chartH);
-        ctx.closePath();
-        ctx.fillStyle = grad;
-        ctx.fill();
-
-        // Line — matches site's dark navy
-        ctx.beginPath();
-        ctx.strokeStyle = '#2c3e50';
-        ctx.lineWidth   = 2;
-        vals.forEach(function(v, i) {
-            if (isNaN(v)) return;
-            if (i === 0) ctx.moveTo(xS(i), yS(v));
-            else         ctx.lineTo(xS(i), yS(v));
-        });
+        vals.forEach(function(v, i) { if (isNaN(v)) return; if (i === 0) ctx.moveTo(xS(i), yS(v)); else ctx.lineTo(xS(i), yS(v)); });
+        ctx.lineTo(xS(vals.length - 1), pad.top + chartH); ctx.lineTo(xS(0), pad.top + chartH);
+        ctx.closePath(); ctx.fillStyle = grad; ctx.fill();
+        ctx.beginPath(); ctx.strokeStyle = '#2c3e50'; ctx.lineWidth = 2;
+        vals.forEach(function(v, i) { if (isNaN(v)) return; if (i === 0) ctx.moveTo(xS(i), yS(v)); else ctx.lineTo(xS(i), yS(v)); });
         ctx.stroke();
-
-        // Tooltip
         canvas.addEventListener('mousemove', function(e) {
             var rect  = canvas.getBoundingClientRect();
             var scale = rect.width / W;
             var inner = (e.clientX - rect.left) - pad.left * scale;
-            if (inner < 0 || inner > chartW * scale) {
-                tipEl.classList.remove('visible');
-                return;
-            }
+            if (inner < 0 || inner > chartW * scale) { tipEl.classList.remove('visible'); return; }
             var idx     = Math.round((inner / (chartW * scale)) * (years.length - 1));
             var clamped = Math.max(0, Math.min(idx, years.length - 1));
             var hv      = vals[clamped];
-            var disp    = isNaN(hv) ? '—'
-                : (hv >= 1000 ? '€' + Math.round(hv).toLocaleString('nl-NL') : hv.toFixed(2));
+            var disp    = isNaN(hv) ? '—' : (hv >= 1000 ? '€' + Math.round(hv).toLocaleString('nl-NL') : hv.toFixed(2));
             tipEl.innerHTML = '<strong>' + years[clamped] + '</strong><br>' + disp;
             tipEl.style.left = (xS(clamped) * scale + 10) + 'px';
             tipEl.style.top  = '0px';
             tipEl.classList.add('visible');
         });
-
-        canvas.addEventListener('mouseleave', function() {
-            tipEl.classList.remove('visible');
-        });
-
+        canvas.addEventListener('mouseleave', function() { tipEl.classList.remove('visible'); });
         window.addEventListener('resize', function() {
-            canvas.width  = canvas.offsetWidth * dpr;
-            canvas.height = H * dpr;
-            ctx.scale(dpr, dpr);
-            drawPlot(data, col, label, n);
+            canvas.width = canvas.offsetWidth * dpr; canvas.height = H * dpr;
+            ctx.scale(dpr, dpr); drawPlot(data, col, label, n);
         });
     }
 </script>
