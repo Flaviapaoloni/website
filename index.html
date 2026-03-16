@@ -11,7 +11,7 @@
         body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.8; color: #2c3e50; background-color: #fff; }
 
         /* ── HEADER ── */
-        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; overflow: visible; }
         .header-content { max-width: 1100px; margin: 0 auto; padding: 1.5rem 30px; display: flex; justify-content: space-between; align-items: center; }
         .site-title { font-size: 1.8rem; font-weight: 600; color: #2c3e50; }
         .site-title a { text-decoration: none; color: inherit; }
@@ -109,7 +109,7 @@
                 background: #fff;
                 border-bottom: 1px solid #e0e0e0;
                 padding: 0.55rem 1.2rem;
-                margin-top: 78px; /* push below the fixed header */
+                margin-top: 72px; /* push below the fixed header */
             }
             .mobile-profile-banner img {
                 width: 42px;
@@ -138,7 +138,7 @@
             /* Header */
             .header-content { padding: 1rem; }
             .menu-toggle { display: block; }
-            nav ul { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; gap: 0; }
+            nav ul { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; gap: 0; z-index: 2000; }
             nav ul.active { display: flex; }
             nav li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
 
@@ -208,7 +208,7 @@
             <p>I am an economist at the <a href="https://ase.uva.nl/content/sections/macro-and-international-economics/macro-and-international-economics.html" target="_blank">University of Amsterdam</a> and the <a href="https://tinbergen.nl/home" target="_blank">Tinbergen Institute</a>. My main research interests are housing markets, immigration, and fiscal policy.</p>
             <p>In my work, I analyse administrative and macro data to study the relationship between housing prices and rents, the effect of socio-economic factors and credit conditions on housing prices in the Netherlands, and the effect of tax-based consolidation on local labor market outcomes in Italy.</p>
             <p>You can find my CV <a href="cv.html">here</a>.</p>
-            <p>Feel free to contact me at <a href="/cdn-cgi/l/email-protection#bfd9d3de91cfded0d3d0d1d6ffd8d2ded6d391dcd0d2" target="_blank"><span class="__cf_email__" data-cfemail="3f59535e114f5e50535051567f58525e5653115c5052">[email&#160;protected]</span></a>.</p>
+            <p>Feel free to contact me at <a href="mailto:fla.paoloni@gmail.com" target="_blank">fla.paoloni@gmail.com</a>.</p>
         </section>
 
         <section id="research">
@@ -248,7 +248,7 @@
             <h2>Contact</h2>
             <div class="contact-info">
                 <p><strong>Email:</strong><br>
-<a href="mailto:f.paoloni2&#64;uva.nl">f.paoloni2&#64;uva.nl</a>
+                    <a href="/cdn-cgi/l/email-protection#70165e00111f1c1f1e1942300506115e1e1c" class="contact-email"><span class="__cf_email__" data-cfemail="197f37697876757677702b596c6f78377775">[email&#160;protected]</span></a>
                 </p>
                 <p><strong>Office:</strong><br>
                     University of Amsterdam<br>
