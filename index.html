@@ -93,7 +93,7 @@
         /* ── MOBILE ── */
         .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #2c3e50; }
 
-        @media (max-width: 768px) {
+       /* @media (max-width: 768px) {
             .header-content { padding: 1rem; }
             .menu-toggle { display: block; }
             nav ul { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; gap: 0; }
@@ -103,7 +103,32 @@
             .page-layout { flex-direction: column; }
             .content { padding: 6rem 20px 3rem; max-width: 100%; }
             section h2 { font-size: 1.5rem; }
-        }
+        }*/
+        @media (max-width: 768px) {
+    .header-content { padding: 1rem; }
+    .menu-toggle { display: block; }
+    nav ul { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; gap: 0; }
+    nav ul.active { display: flex; }
+    nav li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
+
+    /* Instead of hiding the sidebar, stack it on top */
+    .page-layout { flex-direction: column; }
+    .sidebar { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        width: 100%; 
+        padding: 6rem 1.5rem 1.5rem;
+    }
+    .profile-photo { 
+        margin: 0 auto; 
+        width: 150px; 
+        height: 150px; 
+    }
+    .content { padding: 1.5rem; max-width: 100%; }
+    section h2 { font-size: 1.5rem; }
+}
     </style>
 </head>
 <body>
