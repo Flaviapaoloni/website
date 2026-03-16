@@ -249,6 +249,17 @@
             }
         });
     });
+// Hide sidebar on scroll (mobile only)
+window.addEventListener('scroll', function () {
+    if (window.innerWidth <= 768) {
+        const sidebar = document.querySelector('.sidebar');
+        if (window.scrollY > 50) {
+            sidebar.style.display = 'none';
+        } else {
+            sidebar.style.display = 'flex';
+        }
+    }
+});
 
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
