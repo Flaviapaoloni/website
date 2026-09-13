@@ -76,15 +76,15 @@
         .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
         .arrow-right {width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 10px #3498db;}
         .abstract {
-  display: none;
-  margin-top: 5px;
-  font-size: 0.95em;
-  color: #444;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-left: 3px solid #007acc;
-}
-        .paper:hover .abstract {
+         display: none;
+         margin-top: 5px;
+         font-size: 0.95em;
+         color: #444;
+         background-color: #f9f9f9;
+         padding: 10px;
+         border-left: 3px solid #007acc;
+       }
+        .paper-item:hover .abstract {
           display: block;
         }
         /* ── CONTACT ── */
