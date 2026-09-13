@@ -74,7 +74,15 @@
         .paper-link:hover { border-bottom-color: #3498db; }
         .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
         .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
-        .arrow-right {width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 10px #3498db;}
+        .arrow-right {
+                     width: 0; 
+                         height: 0; 
+                         border-top: 5px solid transparent; 
+                         border-bottom: 5px solid transparent; 
+                         border-left: 7px solid #3498db;
+                         display: inline-block;
+                         transition: transform 0.2s ease-in-out; /* Smooth rotation */
+        }
         .abstract {
          display: none;
          margin-top: 5px;
@@ -83,6 +91,10 @@
          background-color: #f9f9f9;
          padding: 10px;
          border-left: 3px solid #007acc;
+       }
+       /* 1. Rotates arrow 90 degrees downward when hovering */
+       .paper-item:hover .arrow-right {
+           transform: rotate(90deg);
        }
         .paper-item:hover .abstract {
           display: block;
