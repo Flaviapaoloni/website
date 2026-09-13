@@ -185,7 +185,27 @@
     section h2 {
         font-size: 1.5rem;
     }
+}  
+@media (hover: hover) and (pointer: fine) {
+    .paper-item:hover .arrow-right {
+        transform: rotate(90deg);
+    }
+    
+    .paper-item:hover .abstract {
+        display: block;
+    }
 }
+
+/* On mobile (touch screens), show when toggled active via click */
+.paper-item.active .arrow-right {
+    transform: rotate(90deg);
+}
+
+.paper-item.active .abstract {
+    display: block;
+}
+
+
         /* @media (max-width: 768px) {
             .header-content { padding: 1rem; }
             .menu-toggle { display: block; }
