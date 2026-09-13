@@ -214,6 +214,15 @@ suppresses employment rates over a four-year horizon.  </div>
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
     }
+       document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            // Check if device relies on touch rather than cursor hover
+            if (window.matchMedia('(hover: none)').matches) {
+                const paperItem = toggle.closest('.paper-item');
+                paperItem.classList.toggle('active');
+            }
+        });
+    });
 </script>
     
 </body>
