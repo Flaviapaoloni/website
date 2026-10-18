@@ -245,7 +245,12 @@ section h2 {
             margin-top: 10px;
         }
 
-        /* Responsive plot image rules */
+        /* Responsive plot image rules .paper-plot-img {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+}*/
         .protected-plot {
             width: 100%;
             height: auto;
@@ -307,12 +312,7 @@ section h2 {
     transform: rotate(90deg);
 }
 
-.paper-plot-img {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    margin-top: 10px;
-}
+
 
 /* ── CV PAGE STYLING ── */
 .cv-container {
