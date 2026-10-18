@@ -113,6 +113,7 @@ nav a.active {
     padding: 40px 20px 30px; /* Aumentato il padding superiore a 40px per distaccarla dalla linea */
     position: sticky;
     top: 5.5rem;             /* Aumentato lo spazio dall'header fisso */
+    align-self: flex-start; /* Fondamentale quando dentro flexbox (.page-layout) */
     flex-shrink: 0;
     text-align: left;
 }
@@ -279,15 +280,26 @@ section h2 {
     padding: 10px;
     border-left: 3px solid #007acc;
 }
+/* Stili di base abstract */
 
-/* Attiva l'abstract e la freccia solo quando l'elemento ha la classe .active (tramite click JS) */
+/* Quando si clicca e aggiunge la classe .open */
+
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
+/* Attiva l'abstract e la freccia solo quando l'elemento ha la classe .active (tramite click JS)
 .paper-item.active .arrow-right {
     transform: rotate(90deg);
 }
 
 .paper-item.active .abstract {
     display: block;
-}
+} */
+
  /*       .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
         .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
         .arrow-right {
