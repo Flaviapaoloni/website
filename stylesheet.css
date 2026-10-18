@@ -365,9 +365,11 @@ footer {
 
     .menu-toggle {
         display: block;
+         cursor: pointer;
     }
 
     nav ul {
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -376,9 +378,9 @@ footer {
         flex-direction: column;
         padding: 1rem 1.5rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        display: none;
         gap: 0;
         border-bottom: 1px solid #e0e0e0;
+        z-index: 999;
     }
 
     nav ul.active {
@@ -394,6 +396,7 @@ footer {
         border-bottom: none;
     }
 
+ 
     .page-layout {
         flex-direction: column;
         padding-top: 4rem;
