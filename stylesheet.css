@@ -98,7 +98,7 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 170px; /* Exact size matching peppecon layout */
+    width: 230px; /* Exact size matching peppecon layout */
     height: auto;
     border-radius: 4px;
     margin-bottom: 14px;
