@@ -293,6 +293,7 @@ section h2 {
 }
 
 .paper-plot-img {
+    display: block ;
             max-width: 480px; /* Reduces maximum plot size on desktop */
             width: 100%;
             margin-top: 10px;
@@ -363,7 +364,7 @@ section h2 {
 }
 
 
-.abstract {
+/* .abstract {
     display: none;
     margin-top: 8px;
     font-size: 0.95em;
@@ -371,7 +372,24 @@ section h2 {
     background-color: #f9f9f9;
     padding: 10px;
     border-left: 3px solid #007acc;
+} */
+.abstract {
+    display: block !important;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    color: #444;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-left: 3px solid #3498db;
 }
+
+/* 2. Hide the toggle button on desktop */
+.mobile-only-toggle {
+    display: none !important;
+}
+
+
 .paper-item.open .abstract {
     display: block;
 }
@@ -595,6 +613,36 @@ footer {
         color: #555;
         margin-bottom: 0.2rem;
     }
+.mobile-only-toggle {
+        display: inline-block !important;
+        color: #3498db;
+        cursor: pointer;
+        margin-top: 6px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Hide the abstract by default on mobile until toggled */
+    .abstract {
+        display: none !important;
+    }
+
+    /* Show the abstract when .paper-item has the .open class */
+    .paper-item.open .abstract {
+        display: block !important;
+    }
+
+    /* Rotate arrow down when opened on mobile */
+    .paper-item.open .mobile-only-toggle .arrow-right {
+        transform: rotate(90deg);
+    }
+
+    /* Plot graphic stays always visible on mobile */
+    .paper-plot-img {
+        display: block !important;
+        max-width: 100%;
+    }
+    
 .pdf-wrapper {
         display: none; /* Removes iframe frame on mobile */
     }
