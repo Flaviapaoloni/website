@@ -1,3 +1,4 @@
+
 /* ── RESET & BASE STYLES ── */
 * {
     margin: 0;
@@ -10,7 +11,6 @@ html {
 }
 
 body {
-    /* Flavia Paoloni Clean Sans-Serif Font Family */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.75;
     color: #2c3e50;
@@ -45,7 +45,6 @@ header {
     color: #2c3e50;
 }
 
-
 .site-title a {
     text-decoration: none;
     color: inherit;
@@ -67,7 +66,7 @@ nav a {
 nav a:hover,
 nav a.active {
     color: #2c3e50;
-    font-weight: normal; /* Rimosso font-weight: 600 per non far spostare il testo */
+    font-weight: normal;
 }
 
 .menu-toggle {
@@ -79,59 +78,40 @@ nav a.active {
     color: #2c3e50;
 }
 
-/* ── TWO-COLUMN PAGE LAYOUT (Exact peppecon structure) ── */
+/* ── TWO-COLUMN PAGE LAYOUT (Adiacente e compatta) ── */
 .page-layout {
     display: flex;
     max-width: 1100px;
     margin: 0 auto;
-    padding-top: 5rem; /* Offsets fixed header */
+    padding-top: 5rem;
     align-items: flex-start;
+    justify-content: flex-start; /* Avvicina i contenuti alla sidebar */
+    gap: 20px; /* Spazio ridotto e controllato tra sidebar e contenuto */
 }
 
-/* ── SIDEBAR (Matching peppecon photo size & layout) ── */
-/* .sidebar {
-    width: 260px;
-    padding: 30px;
-    position: sticky;
-    top: 5rem;
-    flex-shrink: 0;
-    text-align: left;
-}
-
-.profile-photo {
-    width: 230px; /* Exact size matching peppecon layout */
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 14px;
-    display: block;
-    object-fit: cover;
-} */
-/* ── WIDER SIDEBAR (Matching peppecon.github.io width) ── */
-/* Sidebar e Foto proporzionata e staccata */
+/* ── SIDEBAR (Fissa con STICKY e ben proporzionata) ── */
 .sidebar {
-    width: 250px;           /* Ridotto rispetto ai 300px per migliore proporzione */
-    padding: 40px 20px 30px; /* Aumentato il padding superiore a 40px per distaccarla dalla linea */
-    position: fixed;
-    top: 5.5rem;             /* Aumentato lo spazio dall'header fisso */
-    align-self: flex-start; /* Fondamentale quando dentro flexbox (.page-layout) */
+    width: 240px;
+    padding: 40px 10px 30px 10px;
+    position: sticky;          /* Rimane fissa durante lo scorrimento della pagina */
+    top: 5.5rem;               /* Distanza dall'header fisso */
+    align-self: flex-start;
     flex-shrink: 0;
     text-align: left;
 }
 
-
 .profile-photo {
-    width: 100%;            /* Adatta la foto alla larghezza della sidebar */
-    max-width: 220px;       /* Dimensione proporzionata */
+    width: 100%;
+    max-width: 200px;
     height: auto;
     border-radius: 4px;
     margin-bottom: 14px;
     display: block;
     object-fit: cover;
 }
-
 
 .sidebar h2 {
-    font-size:1.6rem; /* 1.2rem;*/
+    font-size: 1.6rem;
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 0.2rem;
@@ -162,20 +142,10 @@ nav a.active {
 }
 
 /* ── MAIN CONTENT AREA ── */
-
-
-/* IMPORTANTE: Quando usi position: fixed sulla sidebar, 
-   aggiungi un margine a sinistra al content principale per evitare che si sovrappongano 
 .content {
     flex: 1;
-    padding: 30px 40px 60px 40px; /* Spazio a sinistra aumentato a 40px (prima 20px) */
- /*   max-width: 800px;
-} */
-.content {
-    flex: 1;
-    margin-left: 250px;  /* Spinge il testo a destra della sidebar fissa */
-    padding: 30px 40px 60px 40px;
-    max-width: 850px;
+    padding: 30px 20px 60px 10px; /* Spazio a sinistra ridotto al minimo per attaccarsi visivamente */
+    max-width: 820px;
 }
 
 section {
@@ -192,7 +162,7 @@ section h2 {
     border-bottom: 1px solid #e0e0e0;
 }
 
-/* ── ABOUT / INTRO TEXT ── */
+/* ── INTRO TEXT ── */
 .content p {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -209,10 +179,10 @@ section h2 {
     text-decoration: underline;
 }
 
-/* ── RESEARCH / PAPER ITEMS (Fixed layout) ── */
+/* ── RESEARCH / PAPER ITEMS ── */
 .paper-item {
-    margin-bottom:  0.5rem;     /* Reduced vertical gap between papers 1.1rem;  */
-    padding-bottom:    0.5rem;  /* Reduced bottom padding 0.9rem;*/
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -225,14 +195,14 @@ section h2 {
     font-size: 1.05rem;
     font-weight: 600;
     color: #2c3e50;
-    margin-bottom: 0.15rem;    /* Minimal gap before authors */
+    margin-bottom: 0.15rem;
     line-height: 1.35;
 }
 
 .paper-authors {
     color: #666666;
     font-size: 0.92rem;
-    margin-bottom: 0.3rem;     /* Minimal gap before abstract toggle or links */
+    margin-bottom: 0.3rem;
     line-height: 1.4;
 }
 
@@ -264,7 +234,6 @@ section h2 {
 }
 
 /* Abstract Toggle & Box */
-/* RIMOZIONE DEL TOGGLE AUTOMATICO SU HOVER */
 .paper-abstract { 
     color: #555; 
     font-size: 1rem; 
@@ -302,7 +271,6 @@ section h2 {
     border-left: 3px solid #007acc;
 }
 
-/* Mostra l'abstract e ruota la freccia solo quando c'è la classe .open */
 .paper-item.open .abstract {
     display: block;
 }
@@ -311,123 +279,7 @@ section h2 {
     transform: rotate(90deg);
 }
 
-
-/* .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
-.abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
-
-.arrow-right {
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 7px solid #3498db;
-    display: inline-block;
-    vertical-align: middle;
-    transform-origin: 3.5px center;
-    transition: transform 0.2s ease-in-out;
-    margin-right: 4px;
-}
-
-.abstract {
-    display: none;
-    margin-top: 5px;
-    font-size: 0.95em;
-    color: #444;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-left: 3px solid #007acc;
-}
-/* Stili di base abstract */
-
-/* Quando si clicca e aggiunge la classe .open */
-
-/* .paper-item.open .abstract {
-    display: block;
-}
-
-.paper-item.open .arrow-right {
-    transform: rotate(90deg); */
-}
-/* Attiva l'abstract e la freccia solo quando l'elemento ha la classe .active (tramite click JS)
-.paper-item.active .arrow-right {
-    transform: rotate(90deg);
-}
-
-.paper-item.active .abstract {
-    display: block;
-} */
-
- /*       .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
-        .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
-        .arrow-right {
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 7px solid #3498db;
-    display: inline-block;
-    vertical-align: middle;                 /* Keeps arrow aligned vertically without shifting text line-height */
-    transform-origin: 3.5px center;         /* Rotates the arrow in place around its own center */
-    transition: transform 0.2s ease-in-out;
-    margin-right: 4px;                      /* Gives fixed spacing so text doesn't jump */
-}*/
-      /*  .abstract {
-         display: none;
-         margin-top: 5px;
-         font-size: 0.95em;
-         color: #444;
-         background-color: #f9f9f9;
-         padding: 10px;
-         border-left: 3px solid #007acc;
-       }
-       /* 1. Rotates arrow 90 degrees downward when hovering */
-    /*   .paper-item:hover .arrow-right {
-           transform: rotate(90deg);
-       }
-        .paper-item:hover .abstract {
-          display: block;
-        } */
-    /* Stili dedicati alla sezione/container del CV */
-
-/* .cv-container,
-.cv-embed,
-.cv-content {
-    width: 100%;
-    max-width: 1000px; /* Aumentata la larghezza del contenitore CV */
-    margin: 0 auto;
-} */
-
-/* .cv-embed iframe,
-.cv-embed object {
-    width: 100%;
-    min-height: 800px;
-    border: none;
-} */
-
-.paper-plot-pdf {
-    margin: 1.5rem 0;
-    padding: 15px;
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-}
-
-.pdf-container {
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #ffffff;
-}
-
-.pdf-container iframe {
-    border: none;
-    display: block;
-    width: 100%;
-    height: 350px; /* Regola l'altezza a seconda delle tue preferenze */
-}
-
-/* ── CV PAGE STYLING (Testuale / Download) ── */
+/* ── CV PAGE STYLING ── */
 .cv-container {
     max-width: 800px;
     margin: 0 auto;
@@ -460,7 +312,6 @@ section h2 {
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 0.3rem;
 }
-
 
 /* ── CONTACT SECTION ── */
 .contact-info {
@@ -542,6 +393,7 @@ footer {
     .page-layout {
         flex-direction: column;
         padding-top: 4rem;
+        gap: 0;
     }
 
     .sidebar {
@@ -564,10 +416,11 @@ footer {
     .content {
         padding: 2rem 20px 3rem;
         max-width: 100%;
+        margin-left: 0;
     }
 
     section h2 {
         font-size: 1.4rem;
     }
-
 }
+
