@@ -312,12 +312,27 @@ section h2 {
             border: 1px solid #e0e0e0;
         }
 
+
         .plot-source {
             font-size: 0.8rem;
             color: #666;
             margin-top: 4px;
             margin-bottom: 1.2rem;
         }
+
+.paper-details-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.abstract-text {
+    flex: 1.2; /* Takes up slightly more width for comfortable reading */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
 
 /* Abstract Toggle & Box */
 .paper-abstract { 
@@ -365,6 +380,11 @@ section h2 {
     transform: rotate(90deg);
 }
 
+.paper-details-row .paper-plot-img {
+    flex: 0.9; /* Takes up the right column */
+    width: 100%;
+    margin-top: 0;
+}
 
 
 /* ── CV PAGE STYLING ── */
@@ -533,7 +553,10 @@ footer {
         flex-direction: column;
         margin-bottom: 1rem;
     }
-    
+    .paper-details-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
     .cv-date {
         font-weight: bold;
         color: #555;
