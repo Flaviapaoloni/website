@@ -91,7 +91,7 @@ nav a.active {
 
 /* ── SIDEBAR (Fissa con STICKY e ben proporzionata) ── */
 .sidebar {
-    width: 240px;
+    width: 300px;
     padding: 40px 10px 30px 10px;
     position: sticky;          /* Rimane fissa durante lo scorrimento della pagina */
     top: 5.5rem;               /* Distanza dall'header fisso */
@@ -101,7 +101,7 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 200px;
+    width: 300px;
     max-width: 300px;
     height: auto;
     border-radius: 4px;
@@ -300,7 +300,7 @@ section h2 {
 }
 
 .cv-download-btn {
-    display: inline-block;
+    display: inline-flex;
     background-color: #3498db;
     color: #ffffff;
     padding: 10px 20px;
@@ -311,6 +311,12 @@ section h2 {
     transition: background-color 0.2s;
 }
 
+
+
+.pdf-wrapper {
+    width: 100%;
+    margin-top: 1rem;
+}
 .cv-download-btn:hover {
     background-color: #2980b9;
     text-decoration: none;
@@ -452,7 +458,16 @@ footer {
         color: #555;
         margin-bottom: 0.2rem;
     }
+.pdf-wrapper {
+        display: none; /* Removes iframe frame on mobile */
+    }
 
+    .cv-download-btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
     .profile-photo {
         margin: 0 auto 12px;
         width: 180px;
