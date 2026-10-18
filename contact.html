@@ -193,7 +193,7 @@
                 </svg>
             </a>
         </div>
-    </aside>
+    
 
     <!-- MAIN CONTENT -->
    
@@ -211,7 +211,8 @@
       </div>
     </div>
   </section>
-
+        </div>
+</aside>
 <!--<div class="contact-info">
                 <p><strong>Email:</strong><br>
                     <a href="mailto:f.paoloni2@uva.nl" class="contact-email">f.paoloni2@uva.nl</a>
@@ -233,7 +234,15 @@
     © Flavia Paoloni · University of Amsterdam · Tinbergen Institute
 </footer>
 
- 
+ <script>
+    // 1. Mobile Menu Toggle
+    function toggleMenu() {
+        var menu = document.getElementById('navMenu');
+        if (menu) {
+            menu.classList.toggle('active');
+        }
+    };
+</script>
 
 </body>
 </html>
