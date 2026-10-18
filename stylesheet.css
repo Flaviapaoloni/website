@@ -40,10 +40,11 @@ header {
 }
 
 .site-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: #2c3e50;
 }
+
 
 .site-title a {
     text-decoration: none;
@@ -66,7 +67,7 @@ nav a {
 nav a:hover,
 nav a.active {
     color: #2c3e50;
-    font-weight: 600;
+    font-weight: normal; /* Rimosso font-weight: 600 per non far spostare il testo */
 }
 
 .menu-toggle {
@@ -106,25 +107,26 @@ nav a.active {
     object-fit: cover;
 } */
 /* ── WIDER SIDEBAR (Matching peppecon.github.io width) ── */
+/* Sidebar e Foto proporzionata e staccata */
 .sidebar {
-    width: 300px;           /* Increased from 260px to 300px */
-    padding: 30px;
+    width: 250px;           /* Ridotto rispetto ai 300px per migliore proporzione */
+    padding: 40px 20px 30px; /* Aumentato il padding superiore a 40px per distaccarla dalla linea */
     position: sticky;
-    top: 5rem;
+    top: 5.5rem;             /* Aumentato lo spazio dall'header fisso */
     flex-shrink: 0;
     text-align: left;
 }
 
-/* ── PROFILE PHOTO ── */
 .profile-photo {
-    width: 300px;           /* Forces your desired width */
-    max-width: 100%;        /* Ensures it never overflows mobile screens */
+    width: 100%;            /* Adatta la foto alla larghezza della sidebar */
+    max-width: 220px;       /* Dimensione proporzionata */
     height: auto;
     border-radius: 4px;
     margin-bottom: 14px;
     display: block;
     object-fit: cover;
 }
+
 
 .sidebar h2 {
     font-size:3rem; /* 1.2rem;*/
@@ -160,9 +162,10 @@ nav a.active {
 /* ── MAIN CONTENT AREA ── */
 .content {
     flex: 1;
-    padding: 30px 40px 60px 20px;
+    padding: 30px 40px 60px 40px; /* Spazio a sinistra aumentato a 40px (prima 20px) */
     max-width: 800px;
 }
+
 
 section {
     margin-bottom: 3.5rem;
@@ -197,8 +200,8 @@ section h2 {
 
 /* ── RESEARCH / PAPER ITEMS (Fixed layout) ── */
 .paper-item {
-    margin-bottom: 1.1rem;      /* Reduced vertical gap between papers */
-    padding-bottom: 0.9rem;    /* Reduced bottom padding */
+    margin-bottom:  0.5rem;     /* Reduced vertical gap between papers 1.1rem;  */
+    padding-bottom:    0.5rem;  /* Reduced bottom padding 0.9rem;*/
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -250,7 +253,42 @@ section h2 {
 }
 
 /* Abstract Toggle & Box */
-        .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
+/* RIMOZIONE DEL TOGGLE AUTOMATICO SU HOVER */
+.paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
+.abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
+
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #3498db;
+    display: inline-block;
+    vertical-align: middle;
+    transform-origin: 3.5px center;
+    transition: transform 0.2s ease-in-out;
+    margin-right: 4px;
+}
+
+.abstract {
+    display: none;
+    margin-top: 5px;
+    font-size: 0.95em;
+    color: #444;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 3px solid #007acc;
+}
+
+/* Attiva l'abstract e la freccia solo quando l'elemento ha la classe .active (tramite click JS) */
+.paper-item.active .arrow-right {
+    transform: rotate(90deg);
+}
+
+.paper-item.active .abstract {
+    display: block;
+}
+ /*       .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
         .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
         .arrow-right {
     width: 0;
@@ -263,8 +301,8 @@ section h2 {
     transform-origin: 3.5px center;         /* Rotates the arrow in place around its own center */
     transition: transform 0.2s ease-in-out;
     margin-right: 4px;                      /* Gives fixed spacing so text doesn't jump */
-}
-        .abstract {
+}*/
+      /*  .abstract {
          display: none;
          margin-top: 5px;
          font-size: 0.95em;
@@ -274,12 +312,12 @@ section h2 {
          border-left: 3px solid #007acc;
        }
        /* 1. Rotates arrow 90 degrees downward when hovering */
-       .paper-item:hover .arrow-right {
+    /*   .paper-item:hover .arrow-right {
            transform: rotate(90deg);
        }
         .paper-item:hover .abstract {
           display: block;
-        }
+        } */
 
 /* ── CONTACT SECTION ── */
 .contact-info {
@@ -388,4 +426,19 @@ footer {
     section h2 {
         font-size: 1.4rem;
     }
+    /* Stili dedicati alla sezione/container del CV */
+.cv-container,
+.cv-embed,
+.cv-content {
+    width: 100%;
+    max-width: 1000px; /* Aumentata la larghezza del contenitore CV */
+    margin: 0 auto;
+}
+
+.cv-embed iframe,
+.cv-embed object {
+    width: 100%;
+    min-height: 800px;
+    border: none;
+}
 }
