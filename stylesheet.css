@@ -122,6 +122,59 @@ nav a.active {
     color: #666666;
     margin-bottom: 0.6rem;
 }
+/* Sidebar Button Row */
+.sidebar-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.sidebar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    flex: 1;
+    padding: 0.45rem 0.6rem;
+    background-color: #f4f6f8;
+    color: #2c3e50;
+    border: 1px solid #dcdfe3;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sidebar-btn:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    border-color: #3498db;
+}
+
+.btn-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* Academic Info Card under profile photo */
+.sidebar-box {
+    background-color: #fafbfc;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.sidebar-box strong {
+    color: #2c3e50;
+}
+
 
 .contact-icons {
     display: flex;
@@ -401,6 +454,8 @@ footer {
         padding: 1rem;
     }
 
+ 
+
     .menu-toggle {
         display: block;
          cursor: pointer;
@@ -447,6 +502,16 @@ footer {
         padding: 2rem 20px 1rem;
         text-align: center;
         border-bottom: 1px solid #e0e0e0;
+    }
+       .sidebar-buttons {
+        justify-content: center;
+        max-width: 280px;
+        margin: 0.8rem auto 1rem;
+    }
+    .sidebar-box {
+        max-width: 280px;
+        margin: 0 auto;
+        text-align: left;
     }
     .cv-table, .cv-table tr, .cv-table td {
         display: block;
