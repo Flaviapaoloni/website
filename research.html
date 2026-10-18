@@ -180,7 +180,7 @@
         </div> -->
         <div class="contact-icons">
             <a href="mailto:f.paoloni2@uva.nl" title="Email">
-                <svg class="contact-icon" fill="none" stroke="#3498db" viewBox="0 0 22 22">
+                <svg class="contact-icon" fill="none" stroke="#3498db" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
@@ -269,7 +269,7 @@
     <!-- Container revealed on hover -->
     <div class="abstract">
      This paper examines the labor market consequences of tax-based fiscal consolidation in Italy over the period 2006–2019. Exploiting municipality-level data on
-personal income tax declarations and labor market outcomes across 579 local labor markets
+personal income tax declarations and labor market outcomes across 610 local labor markets
 (LLMs), combined with the narrative fiscal shock series of Alesina, Favero, and Giavazzi
 (2020), we estimate impulse response functions using local projections instrumented by a
 Bartik shift-share design. Our identification strategy leverages cross-sectional variation in
@@ -323,6 +323,16 @@ suppresses employment rates over a four-year horizon.  </div>
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
     }
+
+       document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const paperItem = this.closest('.paper-item');
+            paperItem.classList.toggle('open');
+        });
+    });
+});
 
     document.querySelectorAll('.paper-plot').forEach(function(plotDiv, idx) {
         var csvUrl    = plotDiv.dataset.csv;
