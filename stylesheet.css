@@ -98,7 +98,7 @@ nav a.active {
 }
 
 .sidebar {
-    width: 300px;
+    width: 250px;
     padding: 40px 10px 30px 10px;
     position: sticky;
     top: 5.5rem;
@@ -108,7 +108,7 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 300px;
+    width: 250px;
     max-width: 300px;
     height: auto;
     border-radius: 4px;
@@ -315,14 +315,7 @@ section h2 {
     margin-top: 10px;
 }
 
-.paper-content-wrap {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 1.5rem;
-    margin-top: 12px;
-    width: 100%;
-}
+
 
 .paper-details-row {
     display: flex;
