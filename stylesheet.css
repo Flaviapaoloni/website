@@ -719,6 +719,10 @@ footer {
     }
 
 
+    .abstract {
+        display: none !important;
+    }
+/* Show the toggle button on mobile for research.html */
     .mobile-only-toggle {
         display: inline-block !important;
         color: #3498db;
@@ -728,10 +732,28 @@ footer {
         font-size: 0.9rem;
     }
 
-    .abstract {
-        display: none !important;
+    /* Hide research abstract on mobile until toggled */
+    .paper-content-wrap .abstract {
+        display: none;
     }
 
+    /* Show abstract when mobile user clicks Show Abstract */
+    .paper-item.open .paper-content-wrap .abstract {
+        display: block !important;
+    }
+
+    /* Keep plot always visible below on mobile */
+    .paper-content-wrap .paper-plot-img {
+        display: block !important;
+        width: 100%;
+    }
+
+    /* Reset max-width to full width on mobile screens */
+    .paper-content-wrap,
+    .abstract-plot-container {
+        max-width: 100%;
+    }
+}
     .paper-item.open .abstract,
     .paper-item.open .paper-content-wrap .abstract {
         display: block !important;
