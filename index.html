@@ -211,10 +211,10 @@ suppresses employment rates over a four-year horizon.  </div>
         });
     });
  
-    function toggleMenu() {
+    
+      /* function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
-    }
-      /* document.querySelectorAll('.abstract-toggle').forEach(toggle => {
+    } document.querySelectorAll('.abstract-toggle').forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             // Check if device relies on touch rather than cursor hover
             if (window.matchMedia('(hover: none)').matches) {
@@ -223,15 +223,17 @@ suppresses employment rates over a four-year horizon.  </div>
             }
         });
     }); */
-       
+
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Trova il paper-item genitore e fa il toggle della classe .open
-        const paperItem = this.closest('.paper-item');
-        paperItem.classList.toggle('open');
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const paperItem = this.closest('.paper-item');
+            paperItem.classList.toggle('open');
+        });
     });
 });
+       
 </script>
     
 </body>
