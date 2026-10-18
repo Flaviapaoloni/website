@@ -199,6 +199,7 @@
             <h2>Research</h2>
 
             <!-- PAPER 1 -->
+            
             <div class="paper-item">
                 <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
                 <div class="paper-authors">
@@ -234,15 +235,16 @@
                 </div>
             </div> -->
 
+
 <div class="paper-item">
     <div class="paper-title">The long-run relationship between house prices and rents</div>
+    
+    <!-- SINGLE CLEAN TOGGLE BUTTON -->
     <div class="abstract-toggle">
-        <span class="arrow-right"></span> 
-    </div>
-    <!-- Toggle Button -->
-    <div class="abstract-toggle" style="cursor: pointer; color: #3498db; font-size: 0.9rem; margin-top: 4px;">
         <span class="arrow-right"></span> Show Abstract
     </div>
+
+
     
     <!-- Container revealed on hover -->
     <div class="abstract">
@@ -278,6 +280,7 @@
         <span class="arrow-right"></span> Show Abstract
     </div>
 
+                
     <!-- Container revealed on hover -->
     <div class="abstract">
      This paper examines the labor market consequences of tax-based fiscal consolidation in Italy over the period 2006–2019. Exploiting municipality-level data on
@@ -317,7 +320,7 @@ suppresses employment rates over a four-year horizon.  </div>
     © Flavia Paoloni · University of Amsterdam · Tinbergen Institute
 </footer>
 
-   <script>
+<!--   <script>
     // Abstract toggles — preserves ▶ / ▼ arrow
     document.querySelectorAll('.abstract-toggle').forEach(function(toggle) {
         toggle.addEventListener('click', function() {
@@ -330,7 +333,30 @@ suppresses employment rates over a four-year horizon.  </div>
                 this.textContent = '▶ Show Abstract';
             }
         });
+    }); -->
+
+   <!--    <script>
+    // Mobile Hamburger Menu Toggle (Needed on ALL pages)
+    function toggleMenu() {
+        var menu = document.getElementById('navMenu');
+        if (menu) {
+            menu.classList.toggle('active');
+        }
+    } -->
+
+<script>
+    // Abstract Toggle (Needed on research.html)
+    document.addEventListener('click', function(e) {
+        const toggle = e.target.closest('.abstract-toggle');
+        if (toggle) {
+            e.preventDefault();
+            const paperItem = toggle.closest('.paper-item');
+            if (paperItem) {
+                paperItem.classList.toggle('open');
+            }
+        }
     });
+
  
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
