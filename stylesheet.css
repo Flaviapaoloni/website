@@ -111,12 +111,13 @@ nav a.active {
 .sidebar {
     width: 250px;           /* Ridotto rispetto ai 300px per migliore proporzione */
     padding: 40px 20px 30px; /* Aumentato il padding superiore a 40px per distaccarla dalla linea */
-    position: sticky;
+    position: fixed;
     top: 5.5rem;             /* Aumentato lo spazio dall'header fisso */
     align-self: flex-start; /* Fondamentale quando dentro flexbox (.page-layout) */
     flex-shrink: 0;
     text-align: left;
 }
+
 
 .profile-photo {
     width: 100%;            /* Adatta la foto alla larghezza della sidebar */
@@ -161,12 +162,21 @@ nav a.active {
 }
 
 /* ── MAIN CONTENT AREA ── */
+
+
+/* IMPORTANTE: Quando usi position: fixed sulla sidebar, 
+   aggiungi un margine a sinistra al content principale per evitare che si sovrappongano 
 .content {
     flex: 1;
     padding: 30px 40px 60px 40px; /* Spazio a sinistra aumentato a 40px (prima 20px) */
-    max-width: 800px;
+ /*   max-width: 800px;
+} */
+.content {
+    flex: 1;
+    margin-left: 250px;  /* Spinge il testo a destra della sidebar fissa */
+    padding: 30px 40px 60px 40px;
+    max-width: 850px;
 }
-
 
 section {
     margin-bottom: 3.5rem;
@@ -255,7 +265,54 @@ section h2 {
 
 /* Abstract Toggle & Box */
 /* RIMOZIONE DEL TOGGLE AUTOMATICO SU HOVER */
-.paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
+.paper-abstract { 
+    color: #555; 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    text-align: justify; 
+}
+
+.abstract-toggle { 
+    color: #3498db; 
+    cursor: pointer; 
+    margin-bottom: 0.5rem; 
+    display: inline-block; 
+}
+
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #3498db;
+    display: inline-block;
+    vertical-align: middle;
+    transform-origin: 3.5px center;
+    transition: transform 0.2s ease-in-out;
+    margin-right: 4px;
+}
+
+.abstract {
+    display: none;
+    margin-top: 5px;
+    font-size: 0.95em;
+    color: #444;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 3px solid #007acc;
+}
+
+/* Mostra l'abstract e ruota la freccia solo quando c'è la classe .open */
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
+
+
+/* .paper-abstract { color: #555; font-size: 1rem; line-height: 1.8; text-align: justify; }
 .abstract-toggle { color: #3498db; cursor: pointer; margin-bottom: 0.5rem; display: inline-block; }
 
 .arrow-right {
@@ -284,12 +341,12 @@ section h2 {
 
 /* Quando si clicca e aggiunge la classe .open */
 
-.paper-item.open .abstract {
+/* .paper-item.open .abstract {
     display: block;
 }
 
 .paper-item.open .arrow-right {
-    transform: rotate(90deg);
+    transform: rotate(90deg); */
 }
 /* Attiva l'abstract e la freccia solo quando l'elemento ha la classe .active (tramite click JS)
 .paper-item.active .arrow-right {
