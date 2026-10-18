@@ -353,24 +353,42 @@ section h2 {
 }
 /* Hide abstract-plot container by default on index.html */
 .abstract-plot-container {
-    display: none;
-    margin-top: 10px;
-}
-
-/* Reveal abstract & plot when .open class is added via click */
-.paper-item.open .abstract-plot-container {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+    width: 100%;
+    max-width: 650px; /* Ensures abstract and plot share equal width on index page */
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+/* Equal width for abstract & plot in index.html */
+.abstract-plot-container .abstract,
+.abstract-plot-container .paper-plot-img {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Reveal Container smoothly when toggled open */
+.paper-item.open .abstract-plot-container {
+    max-height: 1200px; /* High enough to allow smooth expansion */
+    opacity: 1;
+    margin-top: 12px;
+}
+
+.paper-item .arrow-right {
+    transition: transform 0.25s ease-in-out;
+}
+
+
 .paper-item.open .abstract {
     display: block !important;
 }
 
-.paper-item.open .arrow-right {
-    transform: rotate(90deg);
-}
+
 .arrow-right {
     width: 0;
     height: 0;
@@ -437,7 +455,7 @@ section h2 {
     color: #444;
     background-color: #f9fafb;
     padding: 14px 16px;
-    border-left: 3px solid #3498db;
+    border-left: 3px solid #2c3e50;
     border-radius: 4px;
     margin: 0;
     box-sizing: border-box;
@@ -555,11 +573,11 @@ section h2 {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #ffffff;
+    color: #2c3e50;
 }
 
 .contact-item a {
-    color: #ffffff;
+    color: #2c3e50;
     text-decoration: underline;
     font-weight: 500;
     transition: opacity 0.2s ease;
