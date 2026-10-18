@@ -1,40 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-
-       
-    <!-- SIDEBAR -->
-<aside class="sidebar">
-    <img src="Photo_Paoloni_zoom.jpg" alt="Flavia Paoloni" class="profile-photo">
-    <h2>Flavia Paoloni</h2>
-    <p class="subtitle">PhD Candidate in Economics</p>
-
-    <!-- Action Buttons with Small Embedded Icons -->
-    <div class="sidebar-buttons">
-        <a class="sidebar-btn" href="mailto:f.paoloni2@uva.nl">
-            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            Email
-        </a>
-        <a class="sidebar-btn" href="http://www.linkedin.com/in/flavia-paoloni-25b993154" target="_blank">
-            <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-            LinkedIn
-        </a>
-    </div>
-
-    <!-- Info Box beneath photo & buttons 
-    <div class="sidebar-box">
-        <p><strong>Affiliation:</strong><br>University of Amsterdam<br>Tinbergen Institute</p>
-        <p style="margin-top: 0.6rem;"><strong>Research:</strong><br>Housing Markets, Fiscal Policy, Macroeconomics</p>
-    </div> -->
-</aside>
-      
-  <!--  <style>
-      
-    </style> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Flavia Paoloni</title>
+    <meta name="description" content="Flavia Paoloni - PhD Candidate in Economics">
     <link rel="stylesheet" href="stylesheet.css">
 </head> 
 <body>
@@ -59,77 +29,37 @@
 <!-- PAGE LAYOUT -->
 <div class="page-layout">
 
+    <!-- SIDEBAR (Properly placed inside .page-layout) -->
+    <aside class="sidebar">
+        <img src="Photo_Paoloni_zoom.jpg" alt="Flavia Paoloni" class="profile-photo">
+        <h2>Flavia Paoloni</h2>
+        <p class="subtitle">PhD Candidate in Economics</p>
 
+        <!-- Sidebar Action Buttons -->
+        <div class="sidebar-buttons">
+            <a class="sidebar-btn" href="mailto:f.paoloni2@uva.nl">
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                Email
+            </a>
+            <a class="sidebar-btn" href="http://www.linkedin.com/in/flavia-paoloni-25b993154" target="_blank">
+                <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+
+        <!-- Academic Info Box -->
+        <div class="sidebar-box">
+            <p><strong>Affiliation:</strong><br>University of Amsterdam<br>Tinbergen Institute</p>
+            <p style="margin-top: 0.6rem;"><strong>Research:</strong><br>Housing Markets, Fiscal Policy, Macroeconomics</p>
+        </div>
+    </aside>
 
     <!-- MAIN CONTENT -->
     <div class="content">
-<section id="research">
-    <h2>Research</h2>
-
-    <!-- PAPER 1 -->
-    <div class="paper-item">
-        <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
-        <div class="paper-authors">
-            with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
-            Data access funded by "A Sustainable Future" (ASF) grant.
-        </div>
-        <div class="paper-plot-img">
-            <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
-            <div class="plot-source">Source: CBS</div>
-        </div>
-    </div>
-
-    <!-- PAPER 2: SIDE-BY-SIDE ABSTRACT & PLOT -->
-    <div class="paper-item">
-        <div class="paper-title">The long-run relationship between house prices and rents</div>
-        <div class="abstract-toggle">
-            <span class="arrow-right"></span> Show Abstract & Graphic
-        </div>
-        
-        <!-- Collapsible Side-by-Side Container -->
-        <div class="abstract">
-            <div class="paper-details-row">
-                <div class="abstract-text">
-                    I test whether house prices and rents are related in the long and short run using a new quarterly
-                    dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents
-                    correspond to the yearly net present value of house expenses, a function of prices. It follows
-                    that house prices and rents should be positively related. I find evidence of cointegration in
-                    only half of countries using Johansen tests. I observe a negative response of rents to a positive
-                    shock in house prices. Two factors might explain these results: heterogeneity in house quality
-                    reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
-                </div>
-                <div class="paper-plot-img">
-                    <img src="hp_rrnew.png" alt="House Price Index and Rents Index" class="protected-plot">
-                    <div class="plot-source">Source: OECD</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAPER 3 -->
-    <div class="paper-item">
-        <div class="paper-title">Tax-based fiscal consolidation and the labor market</div>
-        <div class="paper-authors">
-            with <a href="https://sites.google.com/view/gabrieleciminelli" target="_blank">Gabriele Ciminelli</a>
-        </div>
-        <div class="abstract-toggle">
-            <span class="arrow-right"></span> Show Abstract
-        </div>
-        <div class="abstract">
-            This paper examines the labor market consequences of tax-based fiscal consolidation in Italy over the period 2006–2019. Exploiting municipality-level data on personal income tax declarations and labor market outcomes across 610 local labor markets (LLMs), combined with the narrative fiscal shock series of Alesina, Favero, and Giavazzi (2020), we estimate impulse response functions using local projections instrumented by a Bartik shift-share design. Our identification strategy leverages cross-sectional variation in pre-existing tax intensity interacted with nationally-determined consolidation shocks, isolating the causal effects of direct tax increases from endogenous responses to local business cycles. The results reveal a one-percentage-point increase in direct taxes raises unemployment and suppresses employment rates over a four-year horizon.
-        </div>
-    </div>
-
-    <!-- PAPER 4 -->
-    <div class="paper-item">
-        <div class="paper-title">Family loans and housing market overbidding: evidence from the Netherlands</div>
-        <div class="paper-authors">
-            with <a href="https://sites.google.com/view/mauromastrogiacomo/home" target="_blank">Mauro Mastrogiacomo</a>, <a href="https://www.dnb.nl/en/research/personal-pages/dorinth-van-dijk/" target="_blank">Dorinth van Dijk</a>
-        </div>
-    </div>
-
-</section>
-       
         <section id="research">
             <h2>Research</h2>
 
@@ -146,28 +76,33 @@
                 </div>
             </div>
 
-            <!-- PAPER 2 -->
-            <div class="paper-item">
-                <div class="paper-title">The long-run relationship between house prices and rents</div>
-                <div class="abstract-toggle">
-                    <span class="arrow-right"></span> Show Abstract
-                </div>
-                <div class="abstract">
-                    I test whether house prices and rents are related in the long and short run using a new quarterly
-                    dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents
-                    correspond to the yearly net present value of house expenses, a function of prices. It follows
-                    that house prices and rents should be positively related. I find evidence of cointegration in
-                    only half of countries using Johansen tests. I observe a negative response of rents to a positive
-                    shock in house prices. Two factors might explain these results: heterogeneity in house quality
-                    reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
-                </div>
-                <div class="paper-plot-img">
-                    <!-- Note: Ensure hp_rrnew is saved as .png or .jpg for mobile compatibility -->
-                    <img src="hp_rrnew.png" alt="House Price Index and Rents Index" class="protected-plot">
-                    <div class="plot-source">Source: OECD</div>
-                </div>
-            </div>
-            
+           <!-- PAPER 2: ALWAYS VISIBLE ON DESKTOP, TOGGLE ON MOBILE -->
+<div class="paper-item">
+    <div class="paper-title">The long-run relationship between house prices and rents</div>
+    
+    <!-- Mobile-Only Toggle Button -->
+    <div class="abstract-toggle mobile-only-toggle">
+        <span class="arrow-right"></span> Show Abstract
+    </div>
+    
+    <!-- Abstract Text -->
+    <div class="abstract">
+        I test whether house prices and rents are related in the long and short run using a new quarterly
+        dataset for 18 OECD countries from 1968 to 2021. If agents treat houses as assets, annual rents
+        correspond to the yearly net present value of house expenses, a function of prices. It follows
+        that house prices and rents should be positively related. I find evidence of cointegration in
+        only half of countries using Johansen tests. I observe a negative response of rents to a positive
+        shock in house prices. Two factors might explain these results: heterogeneity in house quality
+        reducing dwellings' comparability, and rental sector size relieving demand pressure on rental prices.
+    </div>
+
+    <!-- Plot Graphic (Always visible on all screens) -->
+    <div class="paper-plot-img">
+        <img src="hp_rrnew.png" alt="House Price Index and Rents Index" class="protected-plot">
+        <div class="plot-source">Source: OECD</div>
+    </div>
+</div>
+
             <!-- PAPER 3 -->
             <div class="paper-item">
                 <div class="paper-title">Tax-based fiscal consolidation and the labor market</div>
@@ -192,6 +127,7 @@
 
         </section>
     </div><!-- /.content -->
+
 </div><!-- /.page-layout -->
 
 <footer>
@@ -207,7 +143,7 @@
         }
     }
 
-    // 2. Abstract Toggle (Clean, Single Event Listener)
+    // 2. Abstract Toggle (Clean Event Delegation)
     document.addEventListener('click', function(e) {
         const toggle = e.target.closest('.abstract-toggle');
         if (toggle) {
@@ -221,4 +157,3 @@
 </script>
 </body>
 </html>
-
