@@ -318,6 +318,21 @@ section h2 {
         .paper-item:hover .abstract {
           display: block;
         } */
+    /* Stili dedicati alla sezione/container del CV */
+.cv-container,
+.cv-embed,
+.cv-content {
+    width: 100%;
+    max-width: 1000px; /* Aumentata la larghezza del contenitore CV */
+    margin: 0 auto;
+}
+
+.cv-embed iframe,
+.cv-embed object {
+    width: 100%;
+    min-height: 800px;
+    border: none;
+}
 
 /* ── CONTACT SECTION ── */
 .contact-info {
@@ -426,19 +441,5 @@ footer {
     section h2 {
         font-size: 1.4rem;
     }
-    /* Stili dedicati alla sezione/container del CV */
-.cv-container,
-.cv-embed,
-.cv-content {
-    width: 100%;
-    max-width: 1000px; /* Aumentata la larghezza del contenitore CV */
-    margin: 0 auto;
-}
 
-.cv-embed iframe,
-.cv-embed object {
-    width: 100%;
-    min-height: 800px;
-    border: none;
-}
 }
