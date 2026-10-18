@@ -102,7 +102,7 @@ nav a.active {
 
 .profile-photo {
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
     height: auto;
     border-radius: 4px;
     margin-bottom: 14px;
@@ -265,6 +265,7 @@ section h2 {
     margin-right: 4px;
 }
 
+
 .abstract {
     display: none;
     margin-top: 8px;
@@ -280,8 +281,6 @@ section h2 {
 
 .paper-item.open .arrow-right {
     transform: rotate(90deg);
-     transition: transform 0.2s ease-in-out;
-}
 }
 
 /* ── CV PAGE STYLING ── */
