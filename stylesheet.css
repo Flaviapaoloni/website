@@ -176,28 +176,31 @@ section h2 {
 }
 
 /* ── RESEARCH / PAPER ITEMS (Fixed layout) ── */
+/* ── RESEARCH / PAPER ITEMS (Compact List Style) ── */
 .paper-item {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.1rem;      /* Reduced vertical gap between papers */
+    padding-bottom: 0.9rem;    /* Reduced bottom padding */
     border-bottom: 1px solid #f0f0f0;
 }
 
 .paper-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .paper-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #2c3e50;
-    margin-bottom: 0.4rem;
-    line-height: 1.4;
+    margin-bottom: 0.15rem;    /* Minimal gap before authors */
+    line-height: 1.35;
 }
 
 .paper-authors {
     color: #666666;
-    font-size: 0.95rem;
-    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+    margin-bottom: 0.3rem;     /* Minimal gap before abstract toggle or links */
+    line-height: 1.4;
 }
 
 .paper-authors a {
@@ -211,15 +214,15 @@ section h2 {
 
 .paper-links {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
 }
 
 .paper-link {
     color: #3498db;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 500;
 }
 
@@ -231,11 +234,11 @@ section h2 {
 .abstract-toggle {
     color: #3498db;
     cursor: pointer;
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    margin-top: 0.2rem;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     user-select: none;
     font-weight: 500;
 }
@@ -246,16 +249,15 @@ section h2 {
 
 .abstract {
     display: none;
-    margin-top: 10px;
-    font-size: 0.95rem;
+    margin-top: 8px;
+    font-size: 0.92rem;
     color: #444444;
     background-color: #f9f9f9;
-    padding: 14px 16px;
+    padding: 10px 14px;       /* Tight box padding */
     border-left: 3px solid #3498db;
-    line-height: 1.7;
+    line-height: 1.55;
     border-radius: 0 4px 4px 0;
 }
-
 /* ── CONTACT SECTION ── */
 .contact-info {
     background-color: #2c3e50;
