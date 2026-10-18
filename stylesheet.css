@@ -101,7 +101,7 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 100%;
+    width: 200px;
     max-width: 300px;
     height: auto;
     border-radius: 4px;
@@ -126,10 +126,11 @@ nav a.active {
 .contact-icons {
     display: flex;
     flex-direction: row;
-     justify-content: center !important; /* Forza l'allineamento a sinistra */
+    justify-content: center !important; /* Forces centering */
     align-items: center;
     gap: 0.8rem;
     margin-top: 0.5rem;
+    width: 100%; /* Ensures it spans the sidebar to center properly */
 }
 
 .contact-icon {
@@ -409,6 +410,32 @@ footer {
         padding: 2rem 20px 1rem;
         text-align: center;
         border-bottom: 1px solid #e0e0e0;
+    }
+    .cv-table, .cv-table tr, .cv-table td {
+        display: block;
+        width: 100% !important;
+    }
+    
+    .cv-table td {
+        padding: 4px 0 !important;
+    }
+
+    /* Give CV sections breathing room */
+    .cv-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Make CV entry dates stack neatly above descriptions instead of squishing side-by-side */
+    .cv-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    
+    .cv-date {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 0.2rem;
     }
 
     .profile-photo {
