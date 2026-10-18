@@ -545,7 +545,7 @@ section h2 {
     grid-template-columns: 1fr 1fr;
     gap: 28px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    color: #ffffff;
+    color: #2c3e50;
 }
 
 .contact-item h3 {
@@ -553,7 +553,7 @@ section h2 {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #ffffff;
+    color: #2c3e50;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 700;
 }
