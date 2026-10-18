@@ -1,5 +1,6 @@
-
-/* ── RESET & BASE STYLES ── */
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +9,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-y: scroll; /* Prevents layout shifting when switching pages */
 }
 
 body {
@@ -19,7 +21,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── HEADER / NAVIGATION ── */
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION
+   ========================================================================== */
 header {
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
@@ -78,23 +83,25 @@ nav a.active {
     color: #2c3e50;
 }
 
-/* ── TWO-COLUMN PAGE LAYOUT (Adiacente e compatta) ── */
+
+/* ==========================================================================
+   3. PAGE LAYOUT & SIDEBAR
+   ========================================================================== */
 .page-layout {
     display: flex;
     max-width: 1100px;
     margin: 0 auto;
     padding-top: 5rem;
     align-items: flex-start;
-    justify-content: flex-start; /* Avvicina i contenuti alla sidebar */
-    gap: 20px; /* Spazio ridotto e controllato tra sidebar e contenuto */
+    justify-content: flex-start;
+    gap: 20px;
 }
 
-/* ── SIDEBAR (Fissa con STICKY e ben proporzionata) ── */
 .sidebar {
     width: 300px;
     padding: 40px 10px 30px 10px;
-    position: sticky;          /* Rimane fissa durante lo scorrimento della pagina */
-    top: 5.5rem;               /* Distanza dall'header fisso */
+    position: sticky;
+    top: 5.5rem;
     align-self: flex-start;
     flex-shrink: 0;
     text-align: left;
@@ -122,7 +129,8 @@ nav a.active {
     color: #666666;
     margin-bottom: 0.6rem;
 }
-/* Sidebar Button Row */
+
+/* Sidebar Action Buttons */
 .sidebar-buttons {
     display: flex;
     gap: 0.5rem;
@@ -175,7 +183,7 @@ nav a.active {
     color: #2c3e50;
 }
 
-
+/* Old Contact Icons (if used elsewhere) */
 .contact-icons {
     display: flex;
     flex-direction: row;
@@ -198,10 +206,13 @@ nav a.active {
     opacity: 0.75;
 }
 
-/* ── MAIN CONTENT AREA ── */
+
+/* ==========================================================================
+   4. MAIN CONTENT AREA & SECTIONS
+   ========================================================================== */
 .content {
     flex: 1;
-    padding: 30px 20px 60px 10px; /* Spazio a sinistra ridotto al minimo per attaccarsi visivamente */
+    padding: 30px 20px 60px 10px;
     max-width: 820px;
 }
 
@@ -219,7 +230,6 @@ section h2 {
     border-bottom: 1px solid #e0e0e0;
 }
 
-/* ── INTRO TEXT ── */
 .content p {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -236,7 +246,10 @@ section h2 {
     text-decoration: underline;
 }
 
-/* ── RESEARCH / PAPER ITEMS ── */
+
+/* ==========================================================================
+   5. RESEARCH & PAPER ITEMS
+   ========================================================================== */
 .paper-item {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -247,9 +260,11 @@ section h2 {
     border-bottom: none;
     margin-bottom: 0;
 }
+
 .paper-item iframe {
     margin-bottom: 1.5rem; 
 }
+
 .paper-title {
     font-size: 1.05rem;
     font-weight: 600;
@@ -292,21 +307,22 @@ section h2 {
     text-decoration: underline;
 }
 
+/* Research Plots & Side-by-Side Layout */
 .paper-plot-img {
-    display: block ;
-            max-width: 480px; /* Reduces maximum plot size on desktop */
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        /* Responsive plot image rules .paper-plot-img {
+    display: block;
+    max-width: 480px;
     width: 100%;
-    max-width: 100%;
-    overflow: hidden;
     margin-top: 10px;
-}*/
+}
 
-        
+.paper-content-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 12px;
+    width: 100%;
+}
 
 .paper-details-row {
     display: flex;
@@ -315,14 +331,20 @@ section h2 {
     align-items: flex-start;
 }
 
+.paper-details-row .paper-plot-img {
+    flex: 0.9;
+    width: 100%;
+    margin-top: 0;
+}
+
 .abstract-text {
-    flex: 1.2; /* Takes up slightly more width for comfortable reading */
+    flex: 1.2;
     font-size: 0.95rem;
     line-height: 1.6;
     color: #444;
 }
 
-/* Abstract Toggle & Box */
+/* Abstract Toggles & Boxes */
 .paper-abstract { 
     color: #555; 
     font-size: 1rem; 
@@ -350,16 +372,6 @@ section h2 {
     margin-right: 4px;
 }
 
-
-/* .abstract {
-    display: none;
-    margin-top: 8px;
-    font-size: 0.95em;
-    color: #444;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-left: 3px solid #007acc;
-} */
 .abstract {
     display: block !important;
     margin-top: 8px;
@@ -371,38 +383,8 @@ section h2 {
     border-left: 3px solid #3498db;
 }
 
-/* 2. Hide the toggle button on desktop */
-.mobile-only-toggle {
-    display: none !important;
-}
-
-
-.paper-item.open .abstract {
-    display: block;
-}
-
-.paper-item.open .arrow-right {
-    transform: rotate(90deg);
-}
-
-.paper-details-row .paper-plot-img {
-    flex: 0.9; /* Takes up the right column */
-    width: 100%;
-    margin-top: 0;
-}
-/* --- LAYOUT SIDE-BY-SIDE (Desktop) --- */
-.paper-content-wrap {
-    display: flex;
-    flex-direction: row; /* Uno accanto all'altro su desktop */
-    align-items: stretch; /* Stessa altezza visuale per entrambi */
-    gap: 1.5rem;
-    margin-top: 12px;
-    width: 100%;
-}
-
-/* Colonna di Sinistra: Abstract */
 .paper-content-wrap .abstract {
-    flex: 1.1; /* Prende poco più del 50% dello spazio per facilitare la lettura */
+    flex: 1.1;
     display: block !important;
     font-size: 0.92rem;
     line-height: 1.6;
@@ -414,13 +396,16 @@ section h2 {
     margin: 0;
 }
 
-/* Colonna di Destra: Plot Graphic */
-.paper-content-wrap .paper-plot-img {
-    flex: 0.9; /* Prende il resto dello spazio */
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center; /* Centra il grafico verticalmente rispetto al testo */
-    margin: 0;
+.mobile-only-toggle {
+    display: none !important;
+}
+
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
 }
 
 .protected-plot {
@@ -430,7 +415,6 @@ section h2 {
     border-radius: 4px;
     border: 1px solid #e0e0e0;
 }
-    
 
 .plot-source {
     font-size: 0.78rem;
@@ -439,24 +423,21 @@ section h2 {
     margin-bottom: 1.2rem;
 }
 
-/* Nascondi il toggle button su desktop */
-.mobile-only-toggle {
-    display: none !important;
-}
 
-/* ── CV PAGE STYLING ── */
+/* ==========================================================================
+   6. CV PAGE STYLING
+   ========================================================================== */
 .cv-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px 0;
 }
 
-
 .cv-download-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #2c3e50 !important; /* Dark navy background */
-    color: #ffffff !important;            /* White text */
+    background-color: #2c3e50 !important;
+    color: #ffffff !important;
     padding: 10px 18px;
     border-radius: 5px;
     text-decoration: none;
@@ -464,9 +445,9 @@ section h2 {
     font-size: 0.95rem;
     transition: background-color 0.2s ease;
 }
-/* Subtle hover effect */
+
 .cv-download-btn:hover {
-    background-color: #1a252f !important; /* Slightly darker shade on hover */
+    background-color: #1a252f !important;
     color: #ffffff !important;
 }
 
@@ -485,41 +466,40 @@ section h2 {
     padding-bottom: 0.3rem;
 }
 
-/* ── CONTACT SECTION ── */
-/* --- CONTACT CARD CON SFONDO BLU (#2c3e50) --- */
+
+/* ==========================================================================
+   7. CONTACT SECTION & CARDS
+   ========================================================================== */
 .contact-card {
     background-color: #2c3e50;
     border: 1px solid #1a252f;
-    border-left: 4px solid #3498db; /* Linea d'accento azzurra */
+    border-left: 4px solid #3498db;
     border-radius: 8px;
     padding: 24px 28px;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Due colonne su Desktop */
+    grid-template-columns: 1fr 1fr;
     gap: 28px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: #ffffff;
 }
 
-/* Titoli "EMAIL" e "OFFICE" */
 .contact-item h3 {
     margin: 0 0 8px 0;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #3498db; /* Azzurro per risaltare sul blu scuro */
+    color: #3498db;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 700;
 }
 
-/* Testo dell'indirizzo e dei dettagli */
 .contact-item p {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #ffffff; /* Testo bianco ben leggibile */
+    color: #ffffff;
 }
 
-/* Link Email */
 .contact-item a {
     color: #ffffff;
     text-decoration: underline;
@@ -531,7 +511,10 @@ section h2 {
     opacity: 0.85;
 }
 
-/* ── FOOTER ── */
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
 footer {
     max-width: 1100px;
     margin: 4rem auto 0;
@@ -542,17 +525,18 @@ footer {
     font-size: 0.9rem;
 }
 
-/* ── MOBILE RESPONSIVE ── */
+
+/* ==========================================================================
+   9. MOBILE RESPONSIVE STYLES (max-width: 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
     .header-content {
         padding: 1rem;
     }
 
- 
-
     .menu-toggle {
         display: block;
-         cursor: pointer;
+        cursor: pointer;
     }
 
     nav ul {
@@ -583,7 +567,6 @@ footer {
         border-bottom: none;
     }
 
- 
     .page-layout {
         flex-direction: column;
         padding-top: 4rem;
@@ -597,17 +580,25 @@ footer {
         text-align: center;
         border-bottom: 1px solid #e0e0e0;
     }
-       .sidebar-buttons {
+
+    .profile-photo {
+        margin: 0 auto 12px;
+        width: 180px;
+    }
+
+    .sidebar-buttons {
         justify-content: center;
         max-width: 280px;
         margin: 0.8rem auto 1rem;
     }
+
     .sidebar-box {
         max-width: 280px;
         margin: 0 auto;
         text-align: left;
     }
-    
+
+    /* CV Mobile Adjustments */
     .cv-table, .cv-table tr, .cv-table td {
         display: block;
         width: 100% !important;
@@ -617,58 +608,24 @@ footer {
         padding: 4px 0 !important;
     }
 
-    /* Give CV sections breathing room */
     .cv-section {
         margin-bottom: 1.5rem;
     }
     
-    /* Make CV entry dates stack neatly above descriptions instead of squishing side-by-side */
     .cv-row {
         display: flex;
         flex-direction: column;
         margin-bottom: 1rem;
     }
-    .paper-details-row {
-        flex-direction: column;
-        gap: 1rem;
-    }
+
     .cv-date {
         font-weight: bold;
         color: #555;
         margin-bottom: 0.2rem;
     }
-.mobile-only-toggle {
-        display: inline-block !important;
-        color: #3498db;
-        cursor: pointer;
-        margin-top: 6px;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-    }
 
-    /* Hide the abstract by default on mobile until toggled */
-    .abstract {
-        display: none !important;
-    }
-
-    /* Show the abstract when .paper-item has the .open class */
-    .paper-item.open .abstract {
-        display: block !important;
-    }
-
-    /* Rotate arrow down when opened on mobile */
-    .paper-item.open .mobile-only-toggle .arrow-right {
-        transform: rotate(90deg);
-    }
-
-    /* Plot graphic stays always visible on mobile */
-    .paper-plot-img {
-        display: block !important;
-        max-width: 100%;
-    }
-    
-.pdf-wrapper {
-        display: none; /* Removes iframe frame on mobile */
+    .pdf-wrapper {
+        display: none;
     }
 
     .cv-download-btn {
@@ -677,23 +634,50 @@ footer {
         width: 100%;
         box-sizing: border-box;
     }
-    .profile-photo {
-        margin: 0 auto 12px;
-        width: 180px;
+
+    /* Research Mobile Adjustments */
+    .paper-details-row,
+    .paper-content-wrap {
+        flex-direction: column;
+        gap: 1rem;
     }
-.contact-card {
-        grid-template-columns: 1fr; /* Passa a 1 sola colonna */
+
+    .mobile-only-toggle {
+        display: inline-block !important;
+        color: #3498db;
+        cursor: pointer;
+        margin-top: 6px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    .abstract {
+        display: none !important;
+    }
+
+    .paper-item.open .abstract,
+    .paper-item.open .paper-content-wrap .abstract {
+        display: block !important;
+    }
+
+    .paper-item.open .mobile-only-toggle .arrow-right {
+        transform: rotate(90deg);
+    }
+
+    .paper-plot-img {
+        display: block !important;
+        max-width: 100%;
+    }
+
+    /* Contact Card Mobile Adjustments */
+    .contact-card {
+        grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px 18px;
-        width: 100%; /* Prende tutta la larghezza dello schermo */
+        width: 100%;
         box-sizing: border-box;
     }
-    .sidebar-buttons,
-    .sidebar-box {
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+
     .contact-icons {
         justify-content: center;
     }
