@@ -126,7 +126,7 @@ nav a.active {
 .contact-icons {
     display: flex;
     flex-direction: row;
-     justify-content: flex-start !important; /* Forza l'allineamento a sinistra */
+     justify-content: center !important; /* Forza l'allineamento a sinistra */
     align-items: center;
     gap: 0.8rem;
     margin-top: 0.5rem;
