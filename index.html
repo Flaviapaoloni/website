@@ -195,22 +195,26 @@ suppresses employment rates over a four-year horizon.  </div>
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
     }
-</script> -->
+</script> 
+   <script>-->
    <script>
-    // Abstract toggles — preserves ▶ / ▼ arrow
-    document.querySelectorAll('.abstract-toggle').forEach(function(toggle) {
-        toggle.addEventListener('click', function() {
-            var abstract = this.nextElementSibling;
-            if (abstract.style.display === 'none') {
-                abstract.style.display = 'block';
-                this.textContent = '▼ Hide Abstract';
-            } else {
-                abstract.style.display = 'none';
-                this.textContent = '▶ Show Abstract';
+    // Menu mobile toggle
+    function toggleMenu() {
+        document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    // Toggle dell'abstract su click (gestione pulita tramite classe CSS)
+    document.addEventListener('click', function(e) {
+        const toggle = e.target.closest('.abstract-toggle');
+        if (toggle) {
+            e.preventDefault();
+            const paperItem = toggle.closest('.paper-item');
+            if (paperItem) {
+                paperItem.classList.toggle('open');
             }
-        });
+        }
     });
- 
+</script>
     
       /* function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('active');
@@ -243,9 +247,9 @@ document.addEventListener('click', function(e) {
             paperItem.classList.toggle('open');
         });
     });
-});*/
+});  */ <!-- </script>--> 
        
-</script>
+
     
 </body>
 </html>
