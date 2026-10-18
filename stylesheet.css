@@ -1,10 +1,3 @@
-/* ==========================================================
-   Home page: photo + bio sidebar layout
-   Everything is scoped under body.home, so it will not affect
-   research.html, teaching.html, cv.html or contact.html.
-   Append this to your existing stylesheet.css (or replace the
-   home-page rules in it).
-   ========================================================== */
 
 .home {
   --bg: #ffffff;
