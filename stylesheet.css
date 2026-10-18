@@ -1,193 +1,172 @@
-/* ── RESET & BASE STYLES ── */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-  line-height: 1.7; 
-  color: #2d3748; 
-  background-color: #ffffff; 
-  -webkit-font-smoothing: antialiased;
-}
+/* ==========================================================
+   Home page: photo + bio sidebar layout
+   Everything is scoped under body.home, so it will not affect
+   research.html, teaching.html, cv.html or contact.html.
+   Append this to your existing stylesheet.css (or replace the
+   home-page rules in it).
+   ========================================================== */
 
-/* ── HEADER / NAVIGATION ── */
-header { 
-  background-color: #ffffff; 
-  border-bottom: 1px solid #e2e8f0; 
-  position: fixed; 
-  top: 0; left: 0; right: 0; 
-  z-index: 1000; 
-}
-.header-content { 
-  max-width: 1050px; 
-  margin: 0 auto; 
-  padding: 1rem 20px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-}
-.site-title { font-size: 1.35rem; font-weight: 700; color: #1a365d; }
-.site-title a { text-decoration: none; color: inherit; }
+.home {
+  --bg: #ffffff;
+  --text: #222428;
+  --muted: #6b7078;
+  --accent: #1f4e8c;
+  --rule: #e4e6ea;
+  --sidebar-w: 260px;
 
-nav ul { list-style: none; display: flex; gap: 1.8rem; }
-nav a { 
-  text-decoration: none; 
-  color: #718096; 
-  font-size: 0.95rem; 
-  font-weight: 500;
-  transition: color 0.2s; 
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
 }
-nav a:hover, nav a.active { color: #1a365d; font-weight: 600; }
+.home *,
+.home *::before,
+.home *::after { box-sizing: border-box; }
+.home a { color: var(--accent); text-decoration: none; }
+.home a:hover { text-decoration: underline; }
 
-/* ── TWO-COLUMN PAGE LAYOUT ── */
-.page-layout {
-  display: flex;
-  max-width: 1050px;
+/* Top navigation */
+.home .topnav {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.home .topnav-inner {
+  max-width: 1040px;
   margin: 0 auto;
-  padding-top: 4.5rem; /* Offsets fixed header */
-  align-items: flex-start;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 24px;
+}
+.home .brand {
+  font-weight: 700;
+  color: var(--text);
+  padding: 16px 0;
+  letter-spacing: 0.01em;
+}
+.home .brand:hover { text-decoration: none; }
+.home .topnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+}
+.home .topnav li a {
+  display: block;
+  padding: 16px 0 13px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  border-bottom: 3px solid transparent;
+}
+.home .topnav li a:hover { color: var(--text); text-decoration: none; }
+.home .topnav li a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
 }
 
-/* ── LEFT SIDEBAR (PHOTO & ESSENTIAL CONTACT ONLY) ── */
-.sidebar {
-  width: 240px;
-  padding: 40px 20px 40px 20px;
+/* Page layout: sidebar + main */
+.home .page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Sidebar: photo, name, affiliation, links */
+.home .sidebar {
   position: sticky;
-  top: 4.5rem;
-  flex-shrink: 0;
+  top: 32px;
   text-align: left;
 }
-
-.profile-photo {
-  width: 100%;
-  max-width: 190px;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+.home .sidebar img {
   display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--rule);
+  margin-bottom: 20px;
 }
-
-.sidebar h2 { 
-  font-size: 1.15rem; 
-  font-weight: 700; 
-  color: #1a365d; 
-  margin-bottom: 0.2rem; 
+.home .sidebar h1 {
+  margin: 0 0 2px;
+  font-size: 1.55rem;
+  line-height: 1.25;
 }
-
-.sidebar .subtitle { 
-  font-size: 0.88rem; 
-  color: #718096; 
-  margin-bottom: 1rem; 
-  line-height: 1.4; 
+.home .sidebar .role {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
-
-/* Social / Contact Links List under Photo */
-.sidebar-links {
+.home .sidebar .links {
   list-style: none;
-  font-size: 0.9rem;
-  line-height: 2;
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.home .sidebar .links li { margin: 6px 0; }
+.home .sidebar .links .label {
+  display: inline-block;
+  min-width: 74px;
+  color: var(--muted);
 }
 
-.sidebar-links a {
-  color: #2b6cb0;
-  text-decoration: none;
-  font-weight: 500;
+/* Main content: bio */
+.home main h2 {
+  margin: 0 0 16px;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
 }
-
-.sidebar-links a:hover {
-  text-decoration: underline;
+.home main p { margin: 0 0 18px; }
+.home .interests { color: var(--muted); }
+.home .interests strong { color: var(--text); }
+.home .cv-link {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  font-weight: 600;
 }
+.home .cv-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
-/* ── MAIN CONTENT (BIO, JMP, RESEARCH) ── */
-.content {
-  flex: 1;
-  padding: 40px 20px 60px 40px;
-  max-width: 800px;
+.home footer {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
+.home footer div { border-top: 1px solid var(--rule); padding-top: 18px; }
 
-section { margin-bottom: 3rem; scroll-margin-top: 5.5rem; }
-
-section h2 { 
-  font-size: 1.4rem; 
-  font-weight: 700; 
-  color: #1a365d; 
-  margin-bottom: 1.2rem; 
-  padding-bottom: 0.4rem; 
-  border-bottom: 1px solid #e2e8f0; 
-}
-
-/* Bio Paragraph Styling */
-.bio-text p {
-  font-size: 1.02rem;
-  line-height: 1.75;
-  margin-bottom: 1.2rem;
-  color: #2d3748;
-}
-
-.bio-text a {
-  color: #2b6cb0;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.bio-text a:hover {
-  text-decoration: underline;
-}
-
-/* ── PAPER LISTings ── */
-.paper-item { 
-  margin-bottom: 1.8rem; 
-  padding-bottom: 1.5rem; 
-  border-bottom: 1px solid #f0f0f0; 
-}
-.paper-item:last-child { border-bottom: none; }
-
-.paper-title { 
-  font-size: 1.1rem; 
-  font-weight: 600; 
-  color: #1a365d; 
-  margin-bottom: 0.2rem; 
-}
-
-.paper-authors { color: #718096; font-size: 0.92rem; margin-bottom: 0.5rem; }
-
-.paper-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-.paper-link { 
-  color: #2b6cb0; 
-  text-decoration: none; 
-  font-size: 0.88rem; 
-  font-weight: 500; 
-}
-.paper-link:hover { text-decoration: underline; }
-
-/* ── RESPONSIVE MOBILE (STACKS SIDEBAR ABOVE MAIN CONTENT) ── */
-@media (max-width: 768px) {
-  .page-layout { 
-    flex-direction: column; 
-    padding-top: 3.5rem; 
+/* Mobile: photo and bio stack above the text */
+@media (max-width: 760px) {
+  .home { font-size: 16px; }
+  .home .page {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 32px;
   }
-  
-  .sidebar {
-    width: 100%;
+  .home .sidebar {
     position: static;
-    padding: 2rem 20px 1rem;
-    text-align: center;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .profile-photo { 
-    margin: 0 auto 1rem; 
-    max-width: 160px;
-  }
-
-  .sidebar-links {
     display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-
-  .content { 
-    padding: 2rem 20px 3rem; 
-    max-width: 100%; 
-  }
+  .home .sidebar img { width: 180px; }
+  .home .sidebar .links { width: 100%; text-align: center; }
+  .home .sidebar .links .label { display: none; }
 }
