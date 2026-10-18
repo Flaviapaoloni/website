@@ -126,11 +126,12 @@ nav a.active {
 .contact-icons {
     display: flex;
     flex-direction: row;
-    justify-content: center !important; /* Forces centering */
+    justify-content: center !important;
     align-items: center;
     gap: 0.8rem;
     margin-top: 0.5rem;
-    width: 100%; /* Ensures it spans the sidebar to center properly */
+    width: 100% !important;
+    text-align: center !important;
 }
 
 .contact-icon {
@@ -282,6 +283,13 @@ section h2 {
 
 .paper-item.open .arrow-right {
     transform: rotate(90deg);
+}
+
+.paper-plot-img {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
 }
 
 /* ── CV PAGE STYLING ── */
