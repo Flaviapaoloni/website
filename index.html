@@ -215,40 +215,6 @@ suppresses employment rates over a four-year horizon.  </div>
         }
     });
 </script>
-    
-      /* function toggleMenu() {
-        document.getElementById('navMenu').classList.toggle('active');
-    } document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            // Check if device relies on touch rather than cursor hover
-            if (window.matchMedia('(hover: none)').matches) {
-                const paperItem = toggle.closest('.paper-item');
-                paperItem.classList.toggle('active');
-            }
-        });
-    }); */
-document.addEventListener('click', function(e) {
-    // Controlla se l'elemento cliccato o il suo genitore è il toggle dell'abstract
-    const toggle = e.target.closest('.abstract-toggle');
-    if (toggle) {
-        e.preventDefault();
-        const paperItem = toggle.closest('.paper-item');
-        if (paperItem) {
-            paperItem.classList.toggle('open');
-        }
-    }
-});
-       
-/* document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const paperItem = this.closest('.paper-item');
-            paperItem.classList.toggle('open');
-        });
-    });
-});  */ <!-- </script>--> 
-       
 
     
 </body>
