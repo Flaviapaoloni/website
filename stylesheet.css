@@ -352,6 +352,7 @@ section h2 {
     display: inline-block; 
 }
 /* Hide abstract-plot container by default on index.html */
+/* Ensure containers are hidden by default */
 .abstract-plot-container {
     max-height: 0;
     overflow: hidden;
@@ -359,11 +360,12 @@ section h2 {
     transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
     margin-top: 0;
     width: 100%;
-    max-width: 650px; /* Ensures abstract and plot share equal width on index page */
+    max-width: 650px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
+
 
 /* Equal width for abstract & plot in index.html */
 .abstract-plot-container .abstract,
@@ -379,9 +381,11 @@ section h2 {
     margin-top: 12px;
 }
 
-.paper-item .arrow-right {
-    transition: transform 0.25s ease-in-out;
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
 }
+
 
 
 .paper-item.open .abstract {
