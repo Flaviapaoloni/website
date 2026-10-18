@@ -223,8 +223,19 @@ suppresses employment rates over a four-year horizon.  </div>
             }
         });
     }); */
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('click', function(e) {
+    // Controlla se l'elemento cliccato o il suo genitore è il toggle dell'abstract
+    const toggle = e.target.closest('.abstract-toggle');
+    if (toggle) {
+        e.preventDefault();
+        const paperItem = toggle.closest('.paper-item');
+        if (paperItem) {
+            paperItem.classList.toggle('open');
+        }
+    }
+});
+       
+/* document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.abstract-toggle').forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
@@ -232,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paperItem.classList.toggle('open');
         });
     });
-});
+});*/
        
 </script>
     
