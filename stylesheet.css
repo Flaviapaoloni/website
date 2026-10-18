@@ -117,7 +117,7 @@ nav a.active {
 
 /* ── PROFILE PHOTO ── */
 .profile-photo {
-    width: 230px;           /* Forces your desired width */
+    width: 300px;           /* Forces your desired width */
     max-width: 100%;        /* Ensures it never overflows mobile screens */
     height: auto;
     border-radius: 4px;
@@ -127,7 +127,7 @@ nav a.active {
 }
 
 .sidebar h2 {
-    font-size: 1.2rem;
+    font-size:3rem; /* 1.2rem;*/
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 0.2rem;
