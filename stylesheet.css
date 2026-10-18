@@ -1,4 +1,4 @@
-        /* ── RESET & BASE STYLES ── */
+/* ── RESET & BASE STYLES ── */
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +12,8 @@ html {
 body {
     /* Flavia Paoloni Clean Sans-Serif Font Family */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.65;
-    color: #222222;
+    line-height: 1.75;
+    color: #2c3e50;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -22,7 +22,7 @@ body {
 /* ── HEADER / NAVIGATION ── */
 header {
     background-color: #ffffff;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e0e0e0;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,19 +31,18 @@ header {
 }
 
 .header-content {
-    max-width: 1050px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 1.2rem 20px;
+    padding: 1.2rem 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .site-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    color: #111111;
-    letter-spacing: -0.02em;
+    color: #2c3e50;
 }
 
 .site-title a {
@@ -54,20 +53,19 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.8rem;
+    gap: 2rem;
 }
 
 nav a {
     text-decoration: none;
-    color: #666666;
-    font-size: 0.95rem;
-    font-weight: 400;
-    transition: color 0.2s ease;
+    color: #555555;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
 nav a:hover,
 nav a.active {
-    color: #111111;
+    color: #2c3e50;
     font-weight: 600;
 }
 
@@ -77,49 +75,48 @@ nav a.active {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #222222;
+    color: #2c3e50;
 }
 
-/* ── TWO-COLUMN PAGE LAYOUT (peppecon layout) ── */
+/* ── TWO-COLUMN PAGE LAYOUT (Exact peppecon structure) ── */
 .page-layout {
     display: flex;
-    max-width: 1050px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding-top: 4.5rem; /* Offsets fixed header */
+    padding-top: 5rem; /* Offsets fixed header */
     align-items: flex-start;
 }
 
-/* ── LEFT SIDEBAR (PHOTO & SOCIALS) ── */
+/* ── SIDEBAR (Matching peppecon photo size & layout) ── */
 .sidebar {
-    width: 250px;
-    padding: 40px 20px 40px 20px;
+    width: 260px;
+    padding: 30px;
     position: sticky;
-    top: 4.5rem;
+    top: 5rem;
     flex-shrink: 0;
     text-align: left;
 }
 
 .profile-photo {
-    width: 100%;
-    max-width: 180px;
+    width: 170px; /* Exact size matching peppecon layout */
     height: auto;
     border-radius: 4px;
-    margin-bottom: 1rem;
+    margin-bottom: 14px;
     display: block;
+    object-fit: cover;
 }
 
 .sidebar h2 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #111111;
+    color: #2c3e50;
     margin-bottom: 0.2rem;
 }
 
 .sidebar .subtitle {
     font-size: 0.9rem;
     color: #666666;
-    margin-bottom: 0.8rem;
-    line-height: 1.4;
+    margin-bottom: 0.6rem;
 }
 
 .contact-icons {
@@ -130,48 +127,47 @@ nav a.active {
 }
 
 .contact-icon {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
     flex-shrink: 0;
     transition: opacity 0.2s;
 }
 
 .contact-icon:hover {
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
 /* ── MAIN CONTENT AREA ── */
 .content {
     flex: 1;
-    padding: 40px 20px 60px 40px;
+    padding: 30px 40px 60px 20px;
     max-width: 800px;
 }
 
 section {
-    margin-bottom: 3rem;
-    scroll-margin-top: 5.5rem;
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 6rem;
 }
 
 section h2 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: #111111;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid #e5e5e5;
-    letter-spacing: -0.01em;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* ── ABOUT / INTRO TEXT ── */
 .content p {
-    font-size: 1.02rem;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.8;
     margin-bottom: 1.2rem;
-    color: #333333;
+    color: #2c3e50;
 }
 
 .content a {
-    color: #0066cc;
+    color: #3498db;
     text-decoration: none;
 }
 
@@ -179,9 +175,9 @@ section h2 {
     text-decoration: underline;
 }
 
-/* ── RESEARCH / PAPER ITEMS ── */
+/* ── RESEARCH / PAPER ITEMS (Fixed layout) ── */
 .paper-item {
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #f0f0f0;
 }
@@ -191,21 +187,21 @@ section h2 {
 }
 
 .paper-title {
-    font-size: 1.08rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: #111111;
-    margin-bottom: 0.3rem;
+    color: #2c3e50;
+    margin-bottom: 0.4rem;
     line-height: 1.4;
 }
 
 .paper-authors {
     color: #666666;
-    font-size: 0.92rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
 }
 
 .paper-authors a {
-    color: #0066cc;
+    color: #3498db;
     text-decoration: none;
 }
 
@@ -215,15 +211,15 @@ section h2 {
 
 .paper-links {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
 }
 
 .paper-link {
-    color: #0066cc;
+    color: #3498db;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
 }
 
@@ -231,26 +227,21 @@ section h2 {
     text-decoration: underline;
 }
 
-/* Abstract Dropdown / Hover Effect */
+/* Abstract Toggle & Box */
 .abstract-toggle {
-    color: #0066cc;
+    color: #3498db;
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     user-select: none;
+    font-weight: 500;
 }
 
-.arrow-right {
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 6px solid #0066cc;
-    display: inline-block;
-    transition: transform 0.2s ease-in-out;
+.abstract-toggle:hover {
+    text-decoration: underline;
 }
 
 .abstract {
@@ -259,46 +250,26 @@ section h2 {
     font-size: 0.95rem;
     color: #444444;
     background-color: #f9f9f9;
-    padding: 14px;
-    border-left: 3px solid #0066cc;
+    padding: 14px 16px;
+    border-left: 3px solid #3498db;
+    line-height: 1.7;
     border-radius: 0 4px 4px 0;
-    line-height: 1.6;
 }
 
-/* Hover effect on desktop */
-@media (hover: hover) and (pointer: fine) {
-    .paper-item:hover .arrow-right {
-        transform: rotate(90deg);
-    }
-    .paper-item:hover .abstract {
-        display: block;
-    }
-}
-
-/* Touch screen toggle state */
-.paper-item.active .arrow-right {
-    transform: rotate(90deg);
-}
-
-.paper-item.active .abstract {
-    display: block;
-}
-
-/* ── CONTACT CARD ── */
+/* ── CONTACT SECTION ── */
 .contact-info {
-    background-color: #f8f9fa;
-    border: 1px solid #e5e5e5;
-    color: #222222;
-    padding: 1.5rem;
-    border-radius: 6px;
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 2rem 1.8rem;
+    border-radius: 8px;
     margin-bottom: 2rem;
 }
 
 .contact-info p {
-    color: #333333;
-    margin-bottom: 0.8rem;
-    font-size: 0.98rem;
-    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
 }
 
 .contact-info p:last-child {
@@ -306,27 +277,26 @@ section h2 {
 }
 
 .contact-email {
-    color: #0066cc;
-    text-decoration: none;
-    font-weight: 500;
+    color: #ffffff;
+    text-decoration: underline;
 }
 
 .contact-email:hover {
-    text-decoration: underline;
+    opacity: 0.9;
 }
 
 /* ── FOOTER ── */
 footer {
-    max-width: 1050px;
-    margin: 3rem auto 0;
-    padding: 2rem 20px;
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    padding: 2rem 30px;
     text-align: center;
-    border-top: 1px solid #e5e5e5;
-    color: #888888;
-    font-size: 0.88rem;
+    border-top: 1px solid #e0e0e0;
+    color: #999999;
+    font-size: 0.9rem;
 }
 
-/* ── RESPONSIVE MOBILE LAYOUT ── */
+/* ── MOBILE RESPONSIVE ── */
 @media (max-width: 768px) {
     .header-content {
         padding: 1rem;
@@ -344,10 +314,10 @@ footer {
         background: #ffffff;
         flex-direction: column;
         padding: 1rem 1.5rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         display: none;
         gap: 0;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     nav ul.active {
@@ -355,7 +325,7 @@ footer {
     }
 
     nav li {
-        padding: 0.75rem 0;
+        padding: 0.8rem 0;
         border-bottom: 1px solid #f0f0f0;
     }
 
@@ -365,20 +335,20 @@ footer {
 
     .page-layout {
         flex-direction: column;
-        padding-top: 3.5rem;
+        padding-top: 4rem;
     }
 
     .sidebar {
         width: 100%;
         position: static;
-        padding: 2rem 20px 1.5rem;
+        padding: 2rem 20px 1rem;
         text-align: center;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     .profile-photo {
-        margin: 0 auto 1rem;
-        max-width: 150px;
+        margin: 0 auto 12px;
+        width: 150px;
     }
 
     .contact-icons {
@@ -390,11 +360,7 @@ footer {
         max-width: 100%;
     }
 
-    .content p {
-        font-size: 1rem;
-    }
-
     section h2 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 }
