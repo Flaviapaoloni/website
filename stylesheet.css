@@ -372,7 +372,7 @@ section h2 {
     margin-right: 4px;
 }
 
-.abstract {
+/*.abstract {
     display: block !important;
     margin-top: 8px;
     margin-bottom: 12px;
@@ -382,7 +382,28 @@ section h2 {
     padding: 12px;
     border-left: 3px solid #3498db;
 }
+ Default state for abstract across the site: hidden until toggled/hovered */
+.abstract {
+    display: none;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    color: #444;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-left: 3px solid #3498db;
+}
 
+/* Show abstract on hover or when .open class is active (for index.html or standard lists) */
+.paper-item:hover .abstract,
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item:hover .arrow-right,
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
 .paper-content-wrap .abstract {
     flex: 1.1;
     display: block !important;
