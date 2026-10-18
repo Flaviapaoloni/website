@@ -200,8 +200,20 @@
     <div class="content">
         <section id="contact">
             <h2>Contact</h2>
+    <h2>Contact</h2>
+    <div class="contact-card">
+      <div>
+        <h3>Email</h3>
+        <p><a href="mailto:f.paoloni2@uva.nl">f.paoloni2@uva.nl</a></p>
+      </div>
+      <div>
+        <h3>Office</h3>
+        <p>University of Amsterdam<br>Amsterdam School of Economics<br>Roetersstraat 11<br>1018 WB Amsterdam, Netherlands</p>
+      </div>
+    </div>
+  </section>
 
-<div class="contact-info">
+<!--<div class="contact-info">
                 <p><strong>Email:</strong><br>
                     <a href="mailto:f.paoloni2@uva.nl" class="contact-email">f.paoloni2@uva.nl</a>
                 </p>
@@ -212,7 +224,7 @@
                     1018 WB Amsterdam, Netherlands
                 </p>
             </div>
-        </section>
+        </section>-->
 
     </div><!-- /.content -->
 </div><!-- /.page-layout -->
@@ -222,111 +234,7 @@
     © Flavia Paoloni · University of Amsterdam · Tinbergen Institute
 </footer>
 
-   <script>
-    // Abstract toggles — preserves ▶ / ▼ arrow
-    document.querySelectorAll('.abstract-toggle').forEach(function(toggle) {
-        toggle.addEventListener('click', function() {
-            var abstract = this.nextElementSibling;
-            if (abstract.style.display === 'none') {
-                abstract.style.display = 'block';
-                this.textContent = '▼ Hide Abstract';
-            } else {
-                abstract.style.display = 'none';
-                this.textContent = '▶ Show Abstract';
-            }
-        });
-    });
  
-    function toggleMenu() {
-        document.getElementById('navMenu').classList.toggle('active');
-    }
 
-    document.querySelectorAll('.paper-plot').forEach(function(plotDiv, idx) {
-        var csvUrl    = plotDiv.dataset.csv;
-        var delimiter = plotDiv.dataset.delimiter || ',';
-        var col       = plotDiv.dataset.col;
-        var label     = plotDiv.dataset.label || '';
-        var n         = idx + 1;
-        if (!csvUrl || !col) return;
-        Papa.parse(csvUrl, {
-            download: true, header: true, delimiter: delimiter, skipEmptyLines: true,
-            complete: function(results) {
-                if (!results.data || results.data.length === 0) return;
-                plotDiv.classList.add('visible');
-                drawPlot(results.data, col, label, n);
-            }
-        });
-    });
-
-    function drawPlot(data, col, label, n) {
-        var years = data.map(function(r) { return r.year || ''; });
-        var vals  = data.map(function(r) { return parseFloat(r[col]); });
-        var good  = vals.filter(function(v) { return !isNaN(v); });
-        if (!good.length) return;
-        var minV = Math.min.apply(null, good);
-        var maxV = Math.max.apply(null, good);
-        var labelEl  = document.getElementById('plot-label-'   + n);
-        var sourceEl = document.getElementById('plot-source-'  + n);
-        var canvas   = document.getElementById('plot-canvas-'  + n);
-        var tipEl    = document.getElementById('plot-tooltip-' + n);
-        if (labelEl)  labelEl.textContent = label;
-        if (sourceEl) sourceEl.textContent = years[0] + ' – ' + years[years.length - 1] + ' · ' + data.length + ' observations';
-        var dpr = window.devicePixelRatio || 1;
-        var W   = canvas.offsetWidth || 820;
-        var H   = 220;
-        canvas.width  = W * dpr;
-        canvas.height = H * dpr;
-        var ctx = canvas.getContext('2d');
-        ctx.scale(dpr, dpr);
-        var pad    = { top: 16, right: 16, bottom: 36, left: 72 };
-        var chartW = W - pad.left - pad.right;
-        var chartH = H - pad.top  - pad.bottom;
-        var yPad   = (maxV - minV) * 0.1;
-        var yMin   = minV - yPad;
-        var yMax   = maxV + yPad;
-        function xS(i) { return pad.left + (i / (years.length - 1)) * chartW; }
-        function yS(v) { return pad.top  + chartH - ((v - yMin) / (yMax - yMin)) * chartH; }
-        ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 1;
-        ctx.font = '10px Georgia, serif'; ctx.fillStyle = '#999'; ctx.textAlign = 'right';
-        for (var t = 0; t <= 4; t++) {
-            var v = yMin + (t / 4) * (yMax - yMin);
-            var y = yS(v);
-            ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + chartW, y); ctx.stroke();
-            var disp = v >= 1000 ? '€' + Math.round(v / 1000) + 'k' : Math.round(v).toString();
-            ctx.fillText(disp, pad.left - 6, y + 4);
-        }
-        ctx.textAlign = 'center';
-        var step = Math.max(1, Math.floor(years.length / 7));
-        years.forEach(function(yr, i) { if (i % step === 0 || i === years.length - 1) ctx.fillText(yr, xS(i), H - pad.bottom + 16); });
-        var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
-        grad.addColorStop(0, 'rgba(44,62,80,0.10)'); grad.addColorStop(1, 'rgba(44,62,80,0)');
-        ctx.beginPath();
-        vals.forEach(function(v, i) { if (isNaN(v)) return; if (i === 0) ctx.moveTo(xS(i), yS(v)); else ctx.lineTo(xS(i), yS(v)); });
-        ctx.lineTo(xS(vals.length - 1), pad.top + chartH); ctx.lineTo(xS(0), pad.top + chartH);
-        ctx.closePath(); ctx.fillStyle = grad; ctx.fill();
-        ctx.beginPath(); ctx.strokeStyle = '#2c3e50'; ctx.lineWidth = 2;
-        vals.forEach(function(v, i) { if (isNaN(v)) return; if (i === 0) ctx.moveTo(xS(i), yS(v)); else ctx.lineTo(xS(i), yS(v)); });
-        ctx.stroke();
-        canvas.addEventListener('mousemove', function(e) {
-            var rect  = canvas.getBoundingClientRect();
-            var scale = rect.width / W;
-            var inner = (e.clientX - rect.left) - pad.left * scale;
-            if (inner < 0 || inner > chartW * scale) { tipEl.classList.remove('visible'); return; }
-            var idx     = Math.round((inner / (chartW * scale)) * (years.length - 1));
-            var clamped = Math.max(0, Math.min(idx, years.length - 1));
-            var hv      = vals[clamped];
-            var disp    = isNaN(hv) ? '—' : (hv >= 1000 ? '€' + Math.round(hv).toLocaleString('nl-NL') : hv.toFixed(2));
-            tipEl.innerHTML = '<strong>' + years[clamped] + '</strong><br>' + disp;
-            tipEl.style.left = (xS(clamped) * scale + 10) + 'px';
-            tipEl.style.top  = '0px';
-            tipEl.classList.add('visible');
-        });
-        canvas.addEventListener('mouseleave', function() { tipEl.classList.remove('visible'); });
-        window.addEventListener('resize', function() {
-            canvas.width = canvas.offsetWidth * dpr; canvas.height = H * dpr;
-            ctx.scale(dpr, dpr); drawPlot(data, col, label, n);
-        });
-    }
-</script>
 </body>
 </html>
