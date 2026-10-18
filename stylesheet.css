@@ -358,7 +358,26 @@ section h2 {
     margin-bottom: 0.5rem; 
     display: inline-block; 
 }
+/* Hide abstract-plot container by default on index.html */
+.abstract-plot-container {
+    display: none;
+    margin-top: 10px;
+}
 
+/* Reveal abstract & plot when .open class is added via click */
+.paper-item.open .abstract-plot-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.paper-item.open .abstract {
+    display: block !important;
+}
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
 .arrow-right {
     width: 0;
     height: 0;
@@ -391,7 +410,7 @@ section h2 {
     color: #444;
     background-color: #f9f9f9;
     padding: 12px;
-    border-left: 3px solid #3498db;
+    border-left: 3px solid #2c3e50;
 }
 
 /* Show abstract on hover or when .open class is active (for index.html or standard lists) */
@@ -517,9 +536,9 @@ section h2 {
    7. CONTACT SECTION & CARDS
    ========================================================================== */
 .contact-card {
-    background-color: #2c3e50;
+    background-color: #f9f9f9;
     border: 1px solid #1a252f;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #2c3e50;
     border-radius: 8px;
     padding: 24px 28px;
     display: grid;
