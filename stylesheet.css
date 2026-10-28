@@ -346,7 +346,7 @@ body {
 }
 
 .abstract-header::after {
-  content: 'Show Abstract'; */ margin-left: auto; */
+  content: 'Show Abstract'; 
   padding-left: 16px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -457,14 +457,6 @@ body {
   color: #24619e;
 }
 
-/* Show text dynamically next to arrow */
-.abstract-header .toggle-text::before {
-  content: 'Show Abstract';
-}
-
-.abstract-header.expanded .toggle-text::before {
-  content: 'Hide Abstract';
-}
 
 .abstract-header .arrow {
   width: 0;
