@@ -452,15 +452,12 @@ body {
   color: #24619e;
 }
 
-/* The pseudo-element now serves as the main title text next to the arrow */
-.abstract-header::after {
+/* Control text toggling via child span */
+.abstract-header .toggle-text::before {
   content: 'Show Abstract';
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: inherit;
 }
 
-.abstract-header.expanded::after {
+.abstract-header.expanded .toggle-text::before {
   content: 'Hide Abstract';
 }
 
