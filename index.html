@@ -87,40 +87,27 @@
         </div>
         
         <!-- Abstract Toggle Box -->
-        <div class="abstract-container">
-            <div class="abstract-header" onclick="this.classList.toggle('expanded'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
-                <span class="arrow"></span> Abstract
-            </div>
-            <div class="abstract-content">
-                <p>This paper examines how the income heterogeneity of immigrants affects local house price dynamics and neighborhood composition.</p>
-                <div class="paper-plot-img">
-                    <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
-                    <div class="plot-source" style="font-size: 0.78rem; color: #666; margin-top: 6px;">Source: CBS</div>
-                </div>
+         <div class="draft-button">
+        <!-- Abstract Toggle Button -->
+        <div class="abstract-container" style="margin: 0; display: inline-block; border: none; background: none; box-shadow: none;">
+            <div class="abstract-header" onclick="this.classList.toggle('expanded'); var content = this.closest('.paper-item').querySelector('.abstract-content'); content.style.display = content.style.display === 'block' ? 'none' : 'block';" style="border: 1px solid var(--border-color); border-radius: 9999px; padding: 7px 16px; background: var(--primary-bg);">
+                <span class="arrow"></span><span class="toggle-text"></span>
             </div>
         </div>
-    </div>
-<div class="paper-item">
-    <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
-    <div class="paper-authors">
-        with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
-        Data access funded by "A Sustainable Future" (ASF) grant.
+             
+    <!-- Expandable Abstract Content Box -->
+    <div class="abstract-content" style="margin-top: 15px; display: none; border: 1px solid var(--border-color); border-radius: 8px; padding: 18px 22px; background: #ffffff;">
+        <p>This paper examines how the income heterogeneity of immigrants affects local house price dynamics and neighborhood composition.</p>
+         </div>
+        <div class="paper-plot-img" style="margin-top: 15px;">
+            <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
+            <div class="plot-source" style="font-size: 0.78rem; color: #666; margin-top: 6px;">Source: CBS</div>
+        </div>
+   
+</div>
+  
     </div>
     
-    <!-- Abstract Toggle Box -->
-    <div class="abstract-container">
-        <div class="abstract-header" onclick="this.classList.toggle('expanded'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
-            <span class="arrow"></span><span class="toggle-text"></span>
-        </div>
-        <div class="abstract-content">
-            <p>This paper examines how the income heterogeneity of immigrants affects local house price dynamics and neighborhood composition.</p>
-            <div class="paper-plot-img">
-                <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
-                <div class="plot-source" style="font-size: 0.78rem; color: #666; margin-top: 6px;">Source: CBS</div>
-            </div>
-        </div>
-    </div>
-</div>
     <!-- PAPER 2 -->
 <div class="paper-item">
         <div class="paper-title">The long-run relationship between house prices and rents</div>
