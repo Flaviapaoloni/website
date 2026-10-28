@@ -630,7 +630,11 @@ footer {
 /* ==========================================================================
    2. MOBILE RESPONSIVE STYLES (Properly unified block)
    ========================================================================== */
+/* ==========================================================================
+   MOBILE RESPONSIVE STYLES
+   ========================================================================== */
 @media (max-width: 768px) {
+
     .header-content {
         padding: 1rem;
     }
@@ -736,63 +740,59 @@ footer {
         box-sizing: border-box;
     }
 
-    /* --- RESEARCH MOBILE TOGGLE FIX --- */
-    .paper-details-row,
-    .paper-content-wrap {
-        flex-direction: column;
-        gap: 1rem;
+    /* --- RESEARCH & BANNER MOBILE ADJUSTMENTS --- */
+    .paper-item {
+        margin-bottom: 1.5rem;
     }
 
-    /* Show the toggle button on mobile for research.html */
-    .mobile-only-toggle {
-        display: inline-block !important;
-        color: #24619e;
-        cursor: pointer;
-        margin-top: 6px;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
+    /* Adjust abstract banner box for phone screens */
+    .abstract-header {
+        padding: 12px 14px;
+        flex-direction: column; /* Stacks title & toggle neatly on narrow screens */
+        align-items: flex-start;
+        gap: 8px;
     }
 
-    /* Hide research abstract by default on mobile */
-    .paper-content-wrap .abstract {
-        display: none !important;
+    .banner-title {
+        font-size: 1.05rem;
+        line-height: 1.35;
     }
 
-    /* Show abstract when mobile user clicks Show Abstract (.open class added) */
-    .paper-item.open .paper-content-wrap .abstract {
-        display: block !important;
+    .banner-authors {
+        font-size: 0.82rem;
     }
 
-    /* Rotate arrow down when opened */
-    .paper-item.open .mobile-only-toggle .arrow-right {
-        transform: rotate(90deg);
+    .toggle-action {
+        align-self: flex-start;
+        font-size: 0.75rem;
+        margin-top: 2px;
     }
 
-    /* Keep plot always visible below on mobile */
-    .paper-content-wrap .paper-plot-img {
-        display: block !important;
+    .abstract-content,
+    .abstract {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Force research plots to scale smoothly within mobile margins */
+    .paper-plot-img,
+    .abstract-figure {
         width: 100%;
+        max-width: 100%;
+        margin: 12px 0 0;
     }
 
-    .paper-content-wrap,
-    .abstract-plot-container {
+    .protected-plot,
+    .paper-plot-img img {
+        width: 100%;
+        height: auto;
         max-width: 100%;
     }
 
-  .paper-links,
-  .draft-button {
-    gap: 6px;
-  }
-  
-  .abstract-content,
-  .abstract {
-    padding: 15px;
-    font-size: 1rem;
-  }
-
     /* --- CONTACT CARD MOBILE ADJUSTMENTS --- */
     .contact-card {
-        grid-template-columns: 1fr; /* Stacks to 1 column on phone */
+        grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px 18px;
         width: 100%;
@@ -804,7 +804,7 @@ footer {
     }
 
     .content {
-        padding: 2rem 20px 3rem;
+        padding: 2rem 15px 3rem;
         max-width: 100%;
         margin-left: 0;
     }
