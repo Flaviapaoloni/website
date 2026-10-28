@@ -518,6 +518,14 @@ body {
   background-color: #1a252f !important;
   color: #ffffff !important;
 }
+/* --- Desktop Default --- */
+.abstract-header .toggle-text::before {
+    content: "Show Abstract";
+}
+
+.abstract-header.expanded .toggle-text::before {
+    content: "Hide Abstract";
+}
 /* ==========================================================================
    6. CV PAGE STYLING
    ========================================================================== */
@@ -795,13 +803,19 @@ footer {
         padding: 6px 12px !important;
         font-size: 0.8rem !important;
     }
-   /* --- ADD THESE TWO RULES FOR MOBILE TEXT --- */
-    .abstract-header .toggle-text::before {
-        content: 'Show Abstract';
+
+   .abstract-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 8px 14px !important;
+        font-size: 0.82rem !important;
+        gap: 8px !important;
     }
 
+    /* Override the text to always just be "Abstract" on mobile */
+    .abstract-header .toggle-text::before,
     .abstract-header.expanded .toggle-text::before {
-        content: 'Hide Abstract';
+        content: "Abstract" !important;
     }
     /* ------------------------------------------ */
 
