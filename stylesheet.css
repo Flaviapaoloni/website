@@ -795,6 +795,15 @@ footer {
         padding: 6px 12px !important;
         font-size: 0.8rem !important;
     }
+   /* --- ADD THESE TWO RULES FOR MOBILE TEXT --- */
+    .abstract-header .toggle-text::before {
+        content: 'Show Abstract';
+    }
+
+    .abstract-header.expanded .toggle-text::before {
+        content: 'Hide Abstract';
+    }
+    /* ------------------------------------------ */
 
     /* Adjust the paper link button to match size nicely on mobile */
     .paper-link-btn {
