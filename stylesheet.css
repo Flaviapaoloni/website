@@ -157,9 +157,9 @@ nav a.active {
 }
 
 .sidebar-btn:hover {
-    background-color: #3498db;
+    background-color: #24619e;
     color: #ffffff;
-    border-color: #3498db;
+    border-color: #24619e;
 }
 
 .btn-icon {
@@ -238,7 +238,7 @@ section h2 {
 }
 
 .content a {
-    color: #3498db;
+    color: #24619e;
     text-decoration: none;
 }
 
@@ -281,7 +281,7 @@ section h2 {
 }
 
 .paper-authors a {
-    color: #3498db;
+    color: #24619e;
     text-decoration: none;
 }
 
@@ -297,7 +297,7 @@ section h2 {
 }
 
 .paper-link {
-    color: #3498db;
+    color: #24619e;
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 500;
@@ -414,7 +414,7 @@ section h2 {
     color: #444;
     background-color: #f9f9f9;
     padding: 12px;
-    border-left: 3px solid #3498db;
+    border-left: 3px solid #24619e;
 }
  Default state for abstract across the site: hidden until toggled/hovered */
 .abstract {
@@ -725,7 +725,7 @@ footer {
     /* Show the toggle button on mobile for research.html */
     .mobile-only-toggle {
         display: inline-block !important;
-        color: #3498db;
+        color: #24619e;
         cursor: pointer;
         margin-top: 6px;
         margin-bottom: 8px;
