@@ -345,21 +345,6 @@ body {
   color: #24619e;
 }
 
-.abstract-header::after {
-  content: 'Show Abstract'; 
-  padding-left: 16px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #666;
-  white-space: nowrap;
-}
-
-.abstract-header.expanded::after {
-  content: 'Hide Abstract';
-}
-
 .abstract-header .arrow {
   width: 0;
   height: 0;
