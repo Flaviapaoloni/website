@@ -410,7 +410,120 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
+/* ==========================================================================
+   PAPER BANNER & TOGGLE STYLING
+   ========================================================================== */
 
+.paper-item {
+  margin-bottom: 2rem;
+}
+
+.abstract-container {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fdfdfd;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.abstract-container:hover {
+  border-color: #24619e;
+}
+
+/* Banner Header holding title on left and toggle on right */
+.abstract-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: #f8f9fa;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.abstract-header:hover {
+  background: #f1f3f5;
+}
+
+.banner-title-area {
+  flex: 1;
+}
+
+.banner-title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+
+.banner-authors {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #666666;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.banner-authors a {
+  color: #24619e;
+  text-decoration: none;
+}
+
+.banner-authors a:hover {
+  text-decoration: underline;
+}
+
+/* Right-side Toggle Control */
+.toggle-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #24619e;
+  white-space: nowrap;
+}
+
+.toggle-action::after {
+  content: 'Show Abstract';
+}
+
+.abstract-header.expanded .toggle-action::after {
+  content: 'Hide Abstract';
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #24619e;
+  transition: transform 0.2s ease-in-out;
+}
+
+.abstract-header.expanded .arrow {
+  transform: rotate(90deg);
+}
+
+/* Abstract Content Box */
+.abstract-content {
+  display: none;
+  padding: 20px 24px;
+  font-family: var(--font-serif, Georgia, serif);
+  color: #444444;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  text-align: justify;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
 
 /* ==========================================================================
    6. CV PAGE STYLING
