@@ -1,7 +1,8 @@
+
 /* ==========================================================================
    1. RESET & BASE STYLES
    ========================================================================== */
-*, *::before, *::after {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,7 +37,7 @@ header {
 }
 
 .header-content {
-    max-width: 1200px; /* Updated page max-width */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 1.2rem 30px;
     display: flex;
@@ -89,16 +90,16 @@ nav a.active {
    ========================================================================== */
 .page-layout {
     display: flex;
-    max-width: 1200px; /* Expanded page size width */
+    max-width: 1100px;
     margin: 0 auto;
     padding-top: 5rem;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 40px; /* Enhanced spacing between sidebar and content */
+    gap: 20px;
 }
 
 .sidebar {
-    width: 280px; /* Updated sidebar width */
+    width: 250px;
     padding: 40px 10px 30px 10px;
     position: sticky;
     top: 5.5rem;
@@ -108,10 +109,10 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 100%; /* Perfectly scales to sidebar width */
-    max-width: 280px; /* Updated image max width */
+    width: 250px;
+    max-width: 300px;
     height: auto;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-bottom: 14px;
     display: block;
     object-fit: cover;
@@ -157,7 +158,7 @@ nav a.active {
 }
 
 .sidebar-btn:hover {
-    background-color: #24619e;
+    background-color: #24619e; */3498db */
     color: #ffffff;
     border-color: #24619e;
 }
@@ -183,7 +184,7 @@ nav a.active {
     color: #2c3e50;
 }
 
-/* Old Contact Icons */
+/* Old Contact Icons (if used elsewhere) */
 .contact-icons {
     display: flex;
     flex-direction: row;
@@ -213,7 +214,7 @@ nav a.active {
 .content {
     flex: 1;
     padding: 30px 20px 60px 10px;
-    max-width: 850px; /* Optimized main content width */
+    max-width: 820px;
 }
 
 section {
@@ -248,7 +249,7 @@ section h2 {
 
 
 /* ==========================================================================
-   5. RESEARCH & PAPER ITEMS (ABSTRACT TOGGLES & PLOTS)
+   5. RESEARCH & PAPER ITEMS
    ========================================================================== */
 .paper-item {
     margin-bottom: 1.5rem;
@@ -259,6 +260,10 @@ section h2 {
 .paper-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
+}
+
+.paper-item iframe {
+    margin-bottom: 1.5rem; 
 }
 
 .paper-title {
@@ -303,34 +308,52 @@ section h2 {
     text-decoration: underline;
 }
 
-/* Research Plot Image Dimensions */
+/* Research Plots & Side-by-Side Layout */
 .paper-plot-img {
     display: block;
-    max-width: 520px; /* Optimized image width for research plots */
+    max-width: 480px;
     width: 100%;
-    height: auto;
     margin-top: 10px;
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
 }
 
-/* Abstract Toggle Button Controls */
-.abstract-toggle {
-    color: #2c3e50;
-    cursor: pointer;
-    font-size: 0.88rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    user-select: none;
+
+
+.paper-details-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
-.abstract-toggle:hover {
-    color: #24619e;
+.paper-details-row .paper-plot-img {
+    flex: 0.9;
+    width: 100%;
+    margin-top: 0;
 }
 
-/* Abstract Container Smooth Animation */
+.abstract-text {
+    flex: 1.2;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Abstract Toggles & Boxes */
+.paper-abstract { 
+    color: #555; 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    text-align: justify; 
+}
+
+.abstract-toggle { 
+    color: #2c3e50; 
+    cursor: pointer; 
+    margin-bottom: 0.5rem; 
+    display: inline-block; 
+}
+/* Hide abstract-plot container by default on index.html */
+/* Ensure containers are hidden by default */
 .abstract-plot-container {
     max-height: 0;
     overflow: hidden;
@@ -338,22 +361,38 @@ section h2 {
     transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
     margin-top: 0;
     width: 100%;
-    max-width: 700px;
+    max-width: 650px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+
+/* Equal width for abstract & plot in index.html */
+.abstract-plot-container .abstract,
+.abstract-plot-container .paper-plot-img {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Reveal Container smoothly when toggled open */
 .paper-item.open .abstract-plot-container {
-    max-height: 1200px; 
+    max-height: 1200px; /* High enough to allow smooth expansion */
     opacity: 1;
     margin-top: 12px;
 }
 
+
 .paper-item.open .arrow-right {
     transform: rotate(90deg);
 }
+
+
+
+.paper-item.open .abstract {
+    display: block !important;
+}
+
 
 .arrow-right {
     width: 0;
@@ -368,18 +407,101 @@ section h2 {
     margin-right: 4px;
 }
 
-/* Abstract Box styling */
-.abstract {
-    display: block;
-    margin-top: 4px;
-    margin-bottom: 4px;
+/*.abstract {
+    display: block !important;
+    margin-top: 8px;
+    margin-bottom: 12px;
     font-size: 0.95em;
-    line-height: 1.65;
     color: #444;
     background-color: #f9f9f9;
-    padding: 14px 16px;
+    padding: 12px;
     border-left: 3px solid #24619e;
+}
+ Default state for abstract across the site: hidden until toggled/hovered */
+.abstract {
+    display: none;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    color: #444;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-left: 3px solid #2c3e50;
+}
+
+/* Show abstract on hover or when .open class is active (for index.html or standard lists) */
+.paper-item:hover .abstract,
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item:hover .arrow-right,
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
+
+/* --- RESEARCH PAGE: STACKED DESKTOP & UNTOUCHED MOBILE --- */
+.paper-content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 650px; /* Uniform width on laptop screens */
+}
+
+/* Abstract Box */
+.paper-content-wrap .abstract {
+    display: block;
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #444;
+    background-color: #f9fafb;
+    padding: 14px 16px;
+    border-left: 3px solid #2c3e50;
     border-radius: 4px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Plot Box */
+.paper-content-wrap .paper-plot-img {
+    display: block;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.protected-plot {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+
+.mobile-only-toggle {
+    display: none !important;
+}
+
+.paper-item.open .abstract {
+    display: block;
+}
+
+.paper-item.open .arrow-right {
+    transform: rotate(90deg);
+}
+
+
+.plot-source {
+    font-size: 0.78rem;
+    color: #666;
+    margin-top: 6px;
+    margin-bottom: 1.2rem;
 }
 
 
@@ -387,7 +509,7 @@ section h2 {
    6. CV PAGE STYLING
    ========================================================================== */
 .cv-container {
-    max-width: 850px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px 0;
 }
@@ -448,6 +570,7 @@ section h2 {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #2c3e50;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 700;
 }
 
@@ -474,7 +597,7 @@ section h2 {
    8. FOOTER
    ========================================================================== */
 footer {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 4rem auto 0;
     padding: 2rem 30px;
     text-align: center;
@@ -485,7 +608,7 @@ footer {
 
 
 /* ==========================================================================
-   9. MOBILE RESPONSIVE STYLES
+   2. MOBILE RESPONSIVE STYLES (Properly unified block)
    ========================================================================== */
 @media (max-width: 768px) {
     .header-content {
@@ -541,8 +664,7 @@ footer {
 
     .profile-photo {
         margin: 0 auto 12px;
-        width: 180px; /* Scaled down for mobile view */
-        max-width: 180px;
+        width: 180px;
     }
 
     .sidebar-buttons {
@@ -557,6 +679,32 @@ footer {
         text-align: left;
     }
 
+    /* CV Mobile Adjustments */
+    .cv-table, .cv-table tr, .cv-table td {
+        display: block;
+        width: 100% !important;
+    }
+    
+    .cv-table td {
+        padding: 4px 0 !important;
+    }
+
+    .cv-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .cv-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .cv-date {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 0.2rem;
+    }
+
     .pdf-wrapper {
         display: none;
     }
@@ -568,16 +716,60 @@ footer {
         box-sizing: border-box;
     }
 
+    /* --- RESEARCH MOBILE TOGGLE FIX --- */
+    .paper-details-row,
+    .paper-content-wrap {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Show the toggle button on mobile for research.html */
+    .mobile-only-toggle {
+        display: inline-block !important;
+        color: #24619e;
+        cursor: pointer;
+        margin-top: 6px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Hide research abstract by default on mobile */
+    .paper-content-wrap .abstract {
+        display: none !important;
+    }
+
+    /* Show abstract when mobile user clicks Show Abstract (.open class added) */
+    .paper-item.open .paper-content-wrap .abstract {
+        display: block !important;
+    }
+
+    /* Rotate arrow down when opened */
+    .paper-item.open .mobile-only-toggle .arrow-right {
+        transform: rotate(90deg);
+    }
+
+    /* Keep plot always visible below on mobile */
+    .paper-content-wrap .paper-plot-img {
+        display: block !important;
+        width: 100%;
+    }
+
+    .paper-content-wrap,
     .abstract-plot-container {
         max-width: 100%;
     }
 
+    /* --- CONTACT CARD MOBILE ADJUSTMENTS --- */
     .contact-card {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stacks to 1 column on phone */
         gap: 20px;
         padding: 20px 18px;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .contact-icons {
+        justify-content: center;
     }
 
     .content {
@@ -590,4 +782,3 @@ footer {
         font-size: 1.4rem;
     }
 }
-
