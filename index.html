@@ -85,34 +85,39 @@
     
    <!-- PAPER 1 -->
     <div class="paper-item">
-        <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
-        <div class="paper-authors">
-            with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
-            Data access funded by "A Sustainable Future" (ASF) grant.
-        </div>
+    <!-- Paper Title -->
+    <div class="paper-title">Income Heterogeneity of Immigrants and House Price Dynamics</div>
+    
+    <!-- Authors -->
+    <div class="paper-authors">
+        with <a href="https://sites.google.com/view/lmtimm/about" target="_blank">Lisa M. Timm</a>.
+        Data access funded by "A Sustainable Future" (ASF) grant.
+    </div>
+    
+    <!-- Action Buttons Row (Side-by-Side Horizontal Flex) -->
+    <div class="draft-button" style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
         
-        <!-- Action Buttons Row -->
-        <div class="draft-button">
-            <!-- Abstract Toggle Button -->
-            <div class="abstract-container" style="margin: 0; display: inline-block; border: none; background: none; box-shadow: none;">
-                <div class="abstract-header" onclick="this.classList.toggle('expanded'); var content = this.closest('.paper-item').querySelector('.abstract-content'); content.style.display = content.style.display === 'block' ? 'none' : 'block';" style="border: 1px solid var(--border-color); border-radius: 9999px; padding: 7px 16px; background: var(--primary-bg);">
-                    <span class="arrow"></span><span class="toggle-text"></span>
-                </div>
+        <!-- Abstract Toggle Button -->
+        <div class="abstract-container" style="margin: 0; border: none; background: none; box-shadow: none;">
+            <div class="abstract-header" onclick="this.classList.toggle('expanded'); var content = this.closest('.paper-item').querySelector('.abstract-content'); content.style.display = content.style.display === 'block' ? 'none' : 'block';" style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-color, #e0e0e0); border-radius: 9999px; padding: 7px 16px; background: #ffffff; cursor: pointer;">
+                <span class="arrow"></span><span class="toggle-text"></span>
             </div>
-
-            <!-- Paper / Draft Link Button -->
-            <a href="your-paper-link.pdf" class="paper-link-btn" target="_blank">Paper 📄</a>
         </div>
-              
-        <!-- Expandable Abstract Content Box -->
-        <div class="abstract-content" style="margin-top: 15px; display: none; border: 1px solid var(--border-color); border-radius: 8px; padding: 18px 22px; background: #ffffff;">
-            <p>This paper examines how the income heterogeneity of immigrants affects local house price dynamics and neighborhood composition.</p>
-            <div class="paper-plot-img" style="margin-top: 15px;">
-                <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
-                <div class="plot-source" style="font-size: 0.78rem; color: #666; margin-top: 6px;">Source: CBS</div>
-            </div>
+
+        <!-- Paper Link Button -->
+        <a href="your-paper-link.pdf" class="paper-link-btn" target="_blank">Paper 📄</a>
+        
+    </div>
+             
+    <!-- Expandable Abstract Box (Appears below the buttons only when clicked) -->
+    <div class="abstract-content" style="display: none; margin-top: 15px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px 22px; background: #ffffff;">
+        <p>This paper examines how the income heterogeneity of immigrants affects local house price dynamics and neighborhood composition.</p>
+        <div class="paper-plot-img" style="margin-top: 12px;">
+            <img src="hp_imm_git.png" alt="House Price Index and Immigration Trends" class="protected-plot">
+            <div class="plot-source" style="font-size: 0.78rem; color: #666; margin-top: 6px;">Source: CBS</div>
         </div>
     </div>
+</div>
     
     <!-- PAPER 2 -->
     <div class="paper-item">
