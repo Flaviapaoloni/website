@@ -414,6 +414,10 @@ body {
    PAPER BANNER & TOGGLE STYLING
    ========================================================================== */
 
+/* ==========================================================================
+   PAPER TOGGLE STYLING (Strictly Left-Aligned)
+   ========================================================================== */
+
 .paper-item {
   margin-bottom: 2rem;
 }
@@ -441,10 +445,12 @@ body {
   color: #2c3e50;
   display: flex;
   align-items: center;
+  justify-content: flex-start !important; /* Forces all children to the left */
   gap: 8px;
   transition: background 0.2s, color 0.2s;
   user-select: none;
   background: #f8f9fa;
+  width: 100%;
 }
 
 .abstract-header:hover {
@@ -452,7 +458,7 @@ body {
   color: #24619e;
 }
 
-/* Control text toggling via child span */
+/* Control text toggling via child span on the left */
 .abstract-header .toggle-text::before {
   content: 'Show Abstract';
 }
@@ -471,6 +477,7 @@ body {
   vertical-align: middle;
   transition: transform 0.2s ease-in-out;
   margin-right: 4px;
+  flex-shrink: 0;
 }
 
 .abstract-header.expanded .arrow {
@@ -488,7 +495,6 @@ body {
   background-color: #ffffff;
   border-top: 1px solid #e0e0e0;
 }
-
 /* ==========================================================================
    6. CV PAGE STYLING
    ========================================================================== */
