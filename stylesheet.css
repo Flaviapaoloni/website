@@ -272,7 +272,15 @@ body {
   border-bottom: none;
   margin-bottom: 0;
 }
-
+/* Container holding your abstract toggle and paper links */
+.paper-actions, 
+.paper-item {
+    display: flex;
+    flex-wrap: wrap; /* CRITICAL: Allows buttons to drop to the next line instead of overlapping */
+    align-items: center;
+    gap: 10px; /* Consistent spacing between buttons */
+    margin-top: 10px;
+}
 /* Big, prominent paper title */
 .paper-title {
   font-family: var(--font-serif, Georgia, serif);
