@@ -1,7 +1,8 @@
+
 /* ==========================================================================
    1. RESET & BASE STYLES
    ========================================================================== */
-- {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,7 +37,7 @@ header {
 }
 
 .header-content {
-    max-width: 1150px; /* Increased to fit the wider sidebar */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 1.2rem 30px;
     display: flex;
@@ -89,16 +90,16 @@ nav a.active {
    ========================================================================== */
 .page-layout {
     display: flex;
-    max-width: 1150px; /* Increased to fit the wider sidebar */
+    max-width: 1100px;
     margin: 0 auto;
     padding-top: 5rem;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 25px; /* Slightly increased gap for visual balance */
+    gap: 20px;
 }
 
 .sidebar {
-    width: 300px; /* INCREASED FROM 250px to 300px (adjust as needed) */
+    width: 250px;
     padding: 40px 10px 30px 10px;
     position: sticky;
     top: 5.5rem;
@@ -108,7 +109,7 @@ nav a.active {
 }
 
 .profile-photo {
-    width: 100%; /* Automatically scales to fill the new sidebar width */
+    width: 250px;
     max-width: 300px;
     height: auto;
     border-radius: 4px;
@@ -157,7 +158,7 @@ nav a.active {
 }
 
 .sidebar-btn:hover {
-    background-color: #24619e;
+    background-color: #24619e; */3498db */
     color: #ffffff;
     border-color: #24619e;
 }
@@ -261,95 +262,262 @@ body {
   --border-color: #e0e0e0 !important;
 }
 
-/* ==========================================================================
-   PAPER ITEM & ACTIONS LAYOUT FIX
-   ========================================================================== */
-
-/* 1. Paper item stacks its children vertically (Title -> Authors -> Abstract -> Actions) */
 .paper-item {
-    display: block; /* CRITICAL: Fixes the stacking issue */
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
 .paper-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
-/* 2. Dedicated container for your buttons and links (keeps them side-by-side and wraps cleanly) */
-.paper-actions {
-    display: flex;
-    flex-wrap: wrap; 
-    align-items: center;
-    gap: 10px; 
-    margin-top: 12px;
+/* Big, prominent paper title */
+.paper-title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.35rem; /* Made larger and bolder */
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
 }
 
-/* Abstract Container styling */
+.paper-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.paper-title a:hover {
+  color: #24619e;
+}
+
+.paper-authors {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #666666;
+  font-size: 0.92rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.paper-authors a {
+  color: #24619e;
+  text-decoration: none;
+}
+
+.paper-authors a:hover {
+  text-decoration: underline;
+}
+
+/* Abstract Container & Toggles placed right under the title/authors */
 .abstract-container {
-    margin: 12px 0 0 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: #fdfdfd;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    width: 100%; /* Ensures it spans the full width below the authors */
+  margin: 12px 0 0 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fdfdfd;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .abstract-container:hover {
-    border-color: #24619e;
+  border-color: #24619e;
 }
 
-/* Abstract Header Button */
 .abstract-header {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    padding: 8px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #2c3e50;
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    user-select: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, color 0.2s;
+  user-select: none;
+  background: #f8f9fa;
 }
 
 .abstract-header:hover {
-    background: #f1f3f5;
-    color: #24619e;
-    border-color: #24619e;
+  background: #f1f3f5;
+  color: #24619e;
 }
 
-/* Research Paper Link Button */
+.abstract-header .arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #2c3e50;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s ease-in-out;
+  margin-right: 4px;
+}
+
+.abstract-header.expanded .arrow {
+  transform: rotate(90deg);
+}
+
+/* Abstract Content Body */
+.abstract-content {
+  display: none;
+  padding: 18px 22px;
+  font-family: var(--font-serif, Georgia, serif);
+  color: #444444;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  text-align: justify;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Research Plots & Figures inside abstracts */
+.abstract-figure,
+.paper-plot-img {
+  margin: 16px auto 8px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.abstract-figure img,
+.paper-plot-img img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   PAPER BANNER & TOGGLE STYLING
+   ========================================================================== */
+
+/* ==========================================================================
+   PAPER TOGGLE STYLING (Strictly Left-Aligned)
+   ========================================================================== */
+
+.paper-item {
+  margin-bottom: 2rem;
+}
+
+.abstract-container {
+  margin: 12px 0 0 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fdfdfd;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.abstract-container:hover {
+  border-color: #24619e;
+}
+
+.abstract-header {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important; /* Forces all children to the left */
+  gap: 8px;
+  transition: background 0.2s, color 0.2s;
+  user-select: none;
+  background: #f8f9fa;
+  width: 100%;
+}
+
+.abstract-header:hover {
+  background: #f1f3f5;
+  color: #24619e;
+}
+
+
+.abstract-header .arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #2c3e50;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s ease-in-out;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.abstract-header.expanded .arrow {
+  transform: rotate(90deg);
+}
+
+.abstract-content {
+  display: none;
+  padding: 18px 22px;
+  font-family: var(--font-serif, Georgia, serif);
+  color: #444444;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  text-align: justify;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Shared styling for both the abstract toggle and draft button */
+.action-btn, 
+.abstract-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2c3e50;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.action-btn:hover, 
+.abstract-header:hover {
+  background: #f1f3f5;
+  color: #24619e;
+  border-color: #24619e;
+}
+
+/* Research Paper Link Button (Matches CV Button style) */
 .paper-link-btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: #2c3e50 !important;
-    color: #ffffff !important;
-    padding: 7px 16px;
-    border-radius: 9999px !important;
-    text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  background-color: #2c3e50 !important;
+  color: #ffffff !important;
+  padding: 7px 16px; /* Slightly compact for the paper action row */
+  border-radius: 9999px !important; /* Fully rounded pill style */
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
 }
 
 .paper-link-btn:hover {
-    background-color: #1a252f !important;
-    color: #ffffff !important;
+  background-color: #1a252f !important;
+  color: #ffffff !important;
 }
-
 /* --- Desktop Default --- */
 .abstract-header .toggle-text::before {
     content: "Show Abstract";
@@ -358,7 +526,6 @@ body {
 .abstract-header.expanded .toggle-text::before {
     content: "Hide Abstract";
 }
-
 /* Styling for University/Institution Headings inside Teaching */
 .teaching-institution {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Matches body/meta font instead of heavy serif paper titles */
@@ -374,6 +541,7 @@ body {
     color: #555555;
     margin-bottom: 0.3rem;
 }
+
 /* ==========================================================================
    6. CV PAGE STYLING
    ========================================================================== */
@@ -383,14 +551,14 @@ body {
     padding: 20px 0;
 }
 
-/* CV Download Button */
+/* CV Download Button (Updated to round pill shape) */
 .cv-download-btn {
   display: inline-flex;
   align-items: center;
   background-color: #2c3e50 !important;
   color: #ffffff !important;
   padding: 10px 20px;
-  border-radius: 9999px !important;
+  border-radius: 9999px !important; /* Fully rounded pill style */
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -467,7 +635,7 @@ body {
    8. FOOTER
    ========================================================================== */
 footer {
-    max-width: 1150px; /* Increased to match header/layout */
+    max-width: 1100px;
     margin: 4rem auto 0;
     padding: 2rem 30px;
     text-align: center;
@@ -478,7 +646,10 @@ footer {
 
 
 /* ==========================================================================
-   9. MOBILE RESPONSIVE STYLES
+   2. MOBILE RESPONSIVE STYLES (Properly unified block)
+   ========================================================================== */
+/* ==========================================================================
+   MOBILE RESPONSIVE STYLES
    ========================================================================== */
 @media (max-width: 768px) {
 
@@ -592,17 +763,27 @@ footer {
         margin-bottom: 1.5rem;
     }
 
+    /* Adjust abstract banner box for phone screens */
     .abstract-header {
-        flex-direction: row !important;
-        align-items: center !important;
-        padding: 8px 14px !important;
-        font-size: 0.82rem !important;
-        gap: 8px !important;
+        padding: 12px 14px;
+        flex-direction: column; /* Stacks title & toggle neatly on narrow screens */
+        align-items: flex-start;
+        gap: 8px;
     }
 
-    .abstract-header .toggle-text::before,
-    .abstract-header.expanded .toggle-text::before {
-        content: "Abstract" !important;
+    .banner-title {
+        font-size: 1.05rem;
+        line-height: 1.35;
+    }
+
+    .banner-authors {
+        font-size: 0.82rem;
+    }
+
+    .toggle-action {
+        align-self: flex-start;
+        font-size: 0.75rem;
+        margin-top: 2px;
     }
 
     .abstract-content,
@@ -612,6 +793,7 @@ footer {
         line-height: 1.6;
     }
 
+    /* Force research plots to scale smoothly within mobile margins */
     .paper-plot-img,
     .abstract-figure {
         width: 100%;
@@ -626,6 +808,34 @@ footer {
         max-width: 100%;
     }
 
+   .draft-button {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+    }
+
+    /* Ensure the abstract button stays horizontal inside (no vertical stacking) */
+    .abstract-header {
+        flex-direction: row !important;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+    }
+
+   .abstract-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 8px 14px !important;
+        font-size: 0.82rem !important;
+        gap: 8px !important;
+    }
+
+    /* Override the text to always just be "Abstract" on mobile */
+    .abstract-header .toggle-text::before,
+    .abstract-header.expanded .toggle-text::before {
+        content: "Abstract" !important;
+    }
+    /* ------------------------------------------ */
+
+    /* Adjust the paper link button to match size nicely on mobile */
     .paper-link-btn {
         padding: 6px 12px !important;
         font-size: 0.8rem !important;
